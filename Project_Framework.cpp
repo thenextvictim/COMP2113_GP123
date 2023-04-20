@@ -93,7 +93,7 @@ void showCharacterSelection();
 
 Character createCharacter(string name, int hp, int attack, int defense, int gold);
 
-void showInterface(Character character, )
+void showInterface(Character character);
 
 void showMap(Map map, Character character);
 
