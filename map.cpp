@@ -43,6 +43,7 @@ void map(int place){
 		uniform_int_distribution<int> dis(status, 11);
         	status=dis(r_eng);
 	}
+    }
     if (place==2){
         //monster system
     }
@@ -55,28 +56,21 @@ void showmap(){
 int main() {
 	makepath();
 	int status=1;
-	int change, num, place;
-	cout<<"You can go upward OR check map(type 1) OR savegame(type 2) OR quit game(type 3)"
+	int change, place;
+	cout<<"You can go upward OR check map(type 1) OR savegame and quit game(type 2) OR quit game without savegame(type 3) OR check bag(type 4)"
 	while (status!=0){
-	    num++;
 	    cin>>change;
 	    if (change==1){
 	        showmap();
 	    }
 	    if (change==2){
-	        savegame();
+	        //save and quit;
 	    }
 	    if (change==3){
-	        string quitgame;
-	        savegame();
-	        cout<<"Do you want to quit game? Yes OR No"<<endl;
-	        cin>>quitgame;
-	        if (quitgame=="Yes"){
-	            cout<<"Bye"<<endl;
-	            break;
-	        }else{
-	            continue;
-	        }
+		//quit;
+	    }
+	    if (change==4){
+		//bagfunction;
 	    }
 	    if (char change==72){
 	        status++;
