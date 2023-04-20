@@ -39,19 +39,16 @@ void map(int place){
         //awards system
     }
     if (place==1){
-        uniform_int_distribution<int> dis(status, 14);
-        status=dis(r_eng);
-    }
+	if (status<11){
+		uniform_int_distribution<int> dis(status, 11);
+        	status=dis(r_eng);
+	}
     if (place==2){
         //monster system
     }
 }
 
 void showmap(){
-    
-}
-
-void savegame(){
     
 }
 
