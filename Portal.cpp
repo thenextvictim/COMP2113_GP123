@@ -3,8 +3,15 @@
 #include <string>
 #include <cmath>
 #include <cstdlib>
+#include <map>
 
 using namespace std;
+
+/*
+    randomEvent()
+*/
+
+int choose[5][2], position[2]={3,1};
 
 const string Dividing_line = "-------------------------------------------------------------------\n";
 
@@ -31,7 +38,7 @@ void Portal(/*character& player,*/ int choose[][2], int position[2]){
         cout << "Careful and cautious seems the better approach for reaching the top of the Spire. Ignoring the portal you continue on.\n";
     }
     cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-    getline(cin,command);
+    // getline(cin,command);
 }
 
 void Golden_Shrine(/*character& player*/){
@@ -58,7 +65,7 @@ void Golden_Shrine(/*character& player*/){
         cout << "You ignore the shrine.\n";
     }
     cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-    getline(cin,command);
+    // getline(cin,command);
 }
 
 void Treasure_chest(){
@@ -99,7 +106,7 @@ void Treasure_chest(){
             cout << "You ignore this spooky chest.\n";
         }
         cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-        getline(cin,command);
+        // getline(cin,command);
     }
     else {
         // Treasure Chest
@@ -119,16 +126,33 @@ void Treasure_chest(){
             cout << "You ignore the chest.\n";
         }
         cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-        getline(cin,command);
+        // getline(cin,command);
+    }
+}
+
+void randomEvent(){
+    switch (rand()%3)
+    {
+    case 0:
+        Portal(choose,position);
+        break;
+    
+    case 1:
+        Golden_Shrine();
+        break;
+
+    case 2:
+        Treasure_chest();
+        break;
     }
 }
 
 int main(){
-    int choose[5][2], position[2]={3,1};
-    Portal(choose,position);
-    Golden_Shrine();
-    Treasure_chest();
-    //system("pause");
+    string command = "1";
+    while (command == "1"){
+        randomEvent();
+        getline(cin, command);
+    }
     return 0;
 }
 
