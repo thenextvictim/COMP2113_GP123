@@ -80,11 +80,10 @@ role makerole(role &role1){
     return role1;
 }
 
-int display_bag(role role1){
+void display_bag(role role1){
       cout << role1.legend << " " << role1.name << endl; 
       cout << "Damage: " << role1.damage << ", " << "Health: " << role1.health << ", " << "Defense: " << role1.defense << ", " << "Gold coin: " << role1.gold_coin << endl;
       cout << "Weapon: " << role1.weapon << ", " << "Armor: " << role1.armor << ", " << "Holly relic: " << role1.holly_relic << "." << endl; 
-      return 0;
 }
 
 string trophies(){
