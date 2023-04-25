@@ -4,6 +4,7 @@
 #include <cctype>
 #include <math.h>
 #include <cstdlib>
+#include <unistd.h>
 using namespace std;
 
 struct role{
@@ -16,14 +17,14 @@ struct role{
     string weapon;
     string armor;
     bool holly_relic;
-    string trash_talk;
+    string trash_talk[3];
 };
 
 role makerole(role &role1){
     cout << "Please choose your legend. Input 1 if you can to be a Human Warrior, 2 if Elf Magician, 3 if Giant Tank." << endl;
     int a;
     cin >> a;
-    while (a != 1 && a != 2 && a != 3){
+    while (a != 1 && a != 2 && a != 3 ){
         cout << "Error. Please input a correct number." << endl;
         cin >> a;
     }
@@ -36,7 +37,11 @@ role makerole(role &role1){
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
-        role1.trash_talk = "In the name of justice, your guilty will be judged!";
+        role1.trash_talk[0] = "In the name of justice, your guilty will be judged!";
+        //“星星之火，可以燎原。”
+        role1.trash_talk[1] = "A single spark can start a prairie fire";
+        //"失去人性，失去很多。失去兽性，失去一切。"
+        role1.trash_talk[2] = "Lose humanity, lose much. Lose animalistic nature, lose all.";
     }
     else if (a == 2){
         role1.legend = "Elf magician";
@@ -47,7 +52,11 @@ role makerole(role &role1){
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
-        role1.trash_talk = "Elegance is never out of date~";
+        role1.trash_talk[0] = "Elegance is never out of date~";
+        //"生命生而平等，但是精灵们更平等一些。"
+        role1.trash_talk[1] = "Life is born equal, but elves are more equal.";
+        //“魔法的意义就是区分凡人和天才。”
+        role1.trash_talk[2] = "The meaning of magic is to distinguish between mortals and geniuses.";
     }
     else if (a == 3){
         role1.legend = "Giant tank";
@@ -58,7 +67,11 @@ role makerole(role &role1){
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
-        role1.trash_talk = "No one can stand on the shoulders of giants！";
+        role1.trash_talk[0] = "No one can stand on the shoulders of giants！";
+        //"言语上是巨人，行动上还是巨人。"
+        role1.trash_talk[1] = "A giant in speech, a giant in action as well.";
+        //“势不可挡。”
+        role1.trash_talk[2] = "I am unstoppable.";
     }
     cout << "Now please tell your name, brave legend." << endl;
     string name;
@@ -107,7 +120,7 @@ string trophies(){
 
 }
 
-int change_proporties(role role1, string thing){
+void change_proporties(role role1, string thing){
     if (thing=="Long sword"){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
@@ -210,7 +223,6 @@ int change_proporties(role role1, string thing){
         cout << "You dropped it in case you load too much." << endl;
         }
         cout << "You are going on your journey with a happy mood:)." << endl;
-        return 0;
 }
 
 int fight(role role1, role role2){
@@ -219,13 +231,18 @@ int fight(role role1, role role2){
         int fight_health1= role1.health;
         int fight_health2= role2.health;
         // legend attacks first
-        cout << role1.legend << " " << role1.name << ": " << "\"" << role1.trash_talk << "\"" << endl;
-        cout << role2.legend << ": " << "\"" << role2.trash_talk << "\"" << endl;
+        int i, j;
+        i= rand()% 3 ;
+        j= rand()% 3 ;
+        cout << role1.legend << " " << role1.name << ": " << "\"" << role1.trash_talk[i] << "\"" << endl;
+        cout << role2.legend << ": " << "\"" << role2.trash_talk[j] << "\"" << endl;
+        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and e.g. sleep(1.5) states that the programme will stop for 1.5 seconds.
+        sleep(1);
         while (fight_health1 >0 && fight_health2 >0){
         // every round we have random fixed damage for two roles.
         int fixed_damage1= rand()%((role1.damage+2)-(role1.damage-2)+1)+(role1.damage-2);
         int fixed_damage2= rand()%((role2.damage+2)-(role2.damage-2)+1)+(role2.damage-2);
-        cout << "Round" << round << ": " << endl;
+        cout << "Round " << round << ": " << endl;
         cout << role1.legend << " " << role1.name << " attacks " << role2.legend << " and make a hurt of -";
         if ( fixed_damage1 - role2.defense >=0 ){
             fight_health2 = fight_health2- (fixed_damage1 - role2.defense);
@@ -260,6 +277,8 @@ int fight(role role1, role role2){
         }
         //round is over
         round++;
+        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and sleep(1.1) states that the programme will stop for 1.1 seconds.
+        sleep(1);
     
         }
             int get = rand()%((7)-(3)+1)+3;
@@ -299,13 +318,15 @@ int main(){
     role2.weapon = "";
     role2.armor = "";
     role2.holly_relic = false;
-    role2.trash_talk = "Bow-bow~";
+    role2.trash_talk[0] = "Bow-bow~";
+    role2.trash_talk[1] = "Wang-Wang~";
+    role2.trash_talk[2] = "Ouuuuuuuu~~~";
     makerole(role1);
     cout << "_______________________________________________________________" << endl;
     display_bag(role1);
     cout << "_______________________________________________________________" << endl;
     fight(role1, role2);
     cout << "________________________________________________________________" << endl;
-    cout << "Demo correct, thanks Harry Deng." << endl;
+    cout << "Demo correctly, thanks Harry Deng." << endl;
     return 0;
 }
