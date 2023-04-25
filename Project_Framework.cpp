@@ -7,38 +7,37 @@ using namespace std;
 
 // define constant variables
 
-const int Max_Items_In_Bag = 8;
-const int Max_Items_In_Shop = 4;
-const int Max_Weapon_In_Equipment = 1;
-const int Max_Armor_In_Equipment = 1; // all to be modified
+//const int Max_Items_In_Bag = 8;
+//const int Max_Items_In_Shop = 4;
+//const int Max_Weapon_In_Equipment = 1;
+//const int Max_Armor_In_Equipment = 1; // all to be modified
 
-enum itemType {Weapon, Armor, Potion};
-enum itemRarity {Ordinary, Excellent, Epic, Legendary, Myth};
+//enum itemType {Weapon, Armor, Potion};
+//enum itemRarity {Ordinary, Excellent, Epic, Legendary, Myth};
 
 // define Characters
 
-struct Character {
+struct role{
+    string legend;
     string name;
-    int hp;
-    int attack;
+    int damage;
+    int health;
     int defense;
-    int gold;
-    int x;
-    int y; //Position on the Map
-    vector<string> bag;
-    vector<string> equipment;
-    /*
-    vector<Effect> buff;
-    */
+    int gold_coin;
+    string weapon;
+    string armor;
+    bool holly_relic;
+    string trash_talk[3];
 };
 
-Character classes[ ] = {
+
+//Character classes[ ] = {
     // System default classes, e.g. Warrior, Knight, Ranger, Assassin, Archmage...
-};
+//};
 Character enemies[ ] = {
     // System default Enemies, e.g. Slime, Goblin, Murloc, Undead...
 };
-Character player; // Player controlled character
+//Character player; // Player controlled character
 
 // define Items
 
@@ -91,23 +90,15 @@ void showMainMenu();
 
 void showCharacterSelection();
 
-Character createCharacter(string name, int hp, int attack, int defense, int gold);
-
-void showInterface(Character character);
+role makerole(role &role1);
 
 void showMap(Map map, Character character);
 
 void moveCharacter(Character& character, Map& map, string direction);
 
-void showBag(Character character);
+void display_bag(role role1);
 
 void usePotion(Item& potion, Character& character);
-
-void showEquipment(Character character);
-
-void equipItem(Item& item, Character& character);
-
-void unequipItem(Item& item, Character& character);
 
 void showShop(Shop shop, Character& character);
 
@@ -119,9 +110,11 @@ void showEvent(Event event, Character& character);
 
 void handleEvent(Event event, Character& character);
 
-void showBattle(Character& character, Character enemy);
+int fight(role role1, role role2);
 
-void handleBattle(Character& character, Character enemy);
+string trophies();
+
+void change_proporties(role role1, string thing);
 
 bool isDead(Character character); //return true if (character.hp <= 0)
 
@@ -130,7 +123,6 @@ void showEnding(Character character, Map map, Shop shop); //Show the ending plot
 void saveGame(Character character, Map map, Shop shop, string filename);
 
 void loadGame(Character& character, Map& map, Shop& shop, string fliename);
-
 
 void generateMap(Map& map);
 
