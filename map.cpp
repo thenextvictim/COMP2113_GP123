@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
+#include <unistd.h>
 using namespace std;
 random_device rd;//用于生成随机数种子
 mt19937 r_eng(rd());//随机数生成器  
 uniform_int_distribution<int> dis(0, 2);//随机数分布器 闭区间
 //0: awards; 1: jump to other place; 2: monster
 int choice[5]={};
+
 void makepath(){
     int a[2], b[2], c[2], d[2], e[2];
     int choose[5]={a,b,c,d,e};
@@ -54,7 +56,7 @@ void map(int place){
 void showmap(){
     for (int i=0; i<num; i++){
         if (status<3){
-            cout<<"|"<<endl;
+            cout<<"     |     "<<endl;
             break;
         }else{
             if (choice[i]==0){
@@ -68,7 +70,7 @@ void showmap(){
             }
         }
     }
-    cout<<"-----"<<endl;
+    cout<<"---------------"<<endl;
 }
 
 int main() {
