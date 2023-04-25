@@ -1,0 +1,116 @@
+#include<iostream>
+#include<string>
+#include<time.h>
+using namespace std;
+
+struct monster {                     // define monster struct
+	string name;
+	int HP;
+	int attack;
+	int defense;
+	int gold;
+};
+
+struct shop_item {           // define potions and relics in shop
+	string name;
+	string description;
+	int price;
+};
+
+monster Louse = { "Louse",50,25,5,10 };
+monster Cultist = { "Cultist",70,35,10,25 };
+monster Looter = { "Looter",60,30,5,25 };        // the looter will steal the legend's gold coins whennver it attacks. Returns back all the gold if it is defeated. Achievable???
+monster Gremlin_Nob = { "Gremlin Nob",100,35,20,45 };
+monster Bronze_Automation = { "Bronze Automation",200,55,35,0 };      // the boss
+
+shop_item Blood_potion = { "Blood potion","Raise your max HP by 20" ,40 };
+shop_item Attack_potion = { "Attack potion","Raise your strength by 5",30 };
+shop_item Earth_potion = { "Earth potion","Raise your defense value by 5",40 };
+shop_item Thorn_potion = { "Thorn potion","Obtain 10 blocks in your next battle",40 };
+shop_item shop_item_potion_arr[4] = { Blood_potion ,Blood_potion ,Earth_potion ,Thorn_potion };     // four potions
+
+shop_item Toy_Ornithopter = { "Toy Ornithopter","Whenever you use a potion, obtain 5 blocks in the next battle.",50 };
+shop_item Red_skull = { "Red Skull","Whenever your HP is below 50%, gain a addtional 5 strength",50 };
+shop_item Shuriken = { "Shuriken","Deal addtional 5 damage for the first attack in a battle",40 };
+shop_item Anchor = { "Anchor","Gain addtional 10 blocks at the start of every battle",70 };
+shop_item shop_item_relic_arr[4] = { Toy_Ornithopter ,Red_skull ,Shuriken,Anchor };                // four relics
+
+void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold) {
+	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. 'Give me the gold, and I'll give you the goods!', he says."<<endl;
+	shop_item potion1, potion2, relic1, relic2;
+	int choice, m = 0, n;
+	bool buy_items = true;
+	srand(time(NULL));
+	int index_potion1 = rand() % 4;
+	int index_potion2 = rand() % 4;
+	int index_relic1 = rand() % 4;
+	int index_relic2 = rand() % 4;                                    // generate 4 random numbers
+	potion1 = shop_item_potion_arr[index_potion1];
+	potion2 = shop_item_potion_arr[index_potion2];
+	relic1 = shop_item_relic_arr[index_relic1];
+	relic2 = shop_item_relic_arr[index_relic2];
+
+	cout << potion1.name << "  ";
+	cout << potion1.description << "  ";
+	cout << "$" << potion1.price << endl;
+	
+	cout << potion2.name << "  ";
+	cout << potion2.description << "  ";
+	cout << "$" << potion2.price << endl;
+
+	cout << relic1.name << "  ";
+	cout << relic1.description << "  ";
+	cout << "$" << relic1.price << endl;
+
+	cout << relic2.name << "  ";
+	cout << relic2.description << "  ";
+	cout << "$" << relic2.price << endl;        // show four items, two potions and two relics in each shop.
+
+	shop_item shop_item_arr[4] = { potion1,potion2,relic1,relic2 };   // items in shop
+	int bought_items[4] = {};
+	cout << "Choose your preferred items! Enter number 1-4 for the products and 0 for exiting.";
+	while (buy_items) {
+		bool check1 = true, check2 = true;
+		cin >> choice;
+		if (choice == 0) {
+			cout << "'Good luck.',said the gremlin and fades away in the cave.";
+			buy_items = false;
+		}
+		else {
+			for (n = 0; n < m; n++) {
+				if (bought_items[n] == choice) {                                  // check whether the item is bought
+					cout << "The item is sold out! Choose another one !";
+					check1= false;
+					break;
+				}
+			}
+			if (gold < shop_item_arr[choice].price) {                             // check whether the player has enough gold
+				cout << "'stop bothering me if don't have enough gold',said the gremlin";
+				check2 = false;
+			}
+			if (check1 && check2 && choice<=2){
+				if (shop_item_arr[choice].name == Blood_potion.name) {
+					HP += 20;
+					gold -= 40;
+				}
+				if (shop_item_arr[choice].name == Attack_potion.name) {
+					attack += 5;
+					gold -= 30;
+				}
+				if (shop_item_arr[choice].name == Earth_potion.name) {
+					defense += 5;
+					gold -= 40;
+				}
+				if (shop_item_arr[choice].name == Thorn_potion.name) {
+					//block-=10 ？
+					gold -= 40;
+				}
+			}
+		}
+		bought_items[m] = choice;
+		m++;
+	}
+}
+
+
+
