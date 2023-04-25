@@ -236,7 +236,7 @@ int fight(role role1, role role2){
         j= rand()% 3 ;
         cout << role1.legend << " " << role1.name << ": " << "\"" << role1.trash_talk[i] << "\"" << endl;
         cout << role2.legend << ": " << "\"" << role2.trash_talk[j] << "\"" << endl;
-        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and e.g. sleep(1.5) states that the programme will stop for 1.5 seconds.
+        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and e.g. sleep(1) states that the programme will stop for 1 seconds.
         sleep(1);
         while (fight_health1 >0 && fight_health2 >0){
         // every round we have random fixed damage for two roles.
@@ -277,7 +277,7 @@ int fight(role role1, role role2){
         }
         //round is over
         round++;
-        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and sleep(1.1) states that the programme will stop for 1.1 seconds.
+        //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and sleep(1) states that the programme will stop for 1 seconds.
         sleep(1);
     
         }
