@@ -77,7 +77,7 @@ int main() {
 	makepath();
 	int status=1, num=0;
 	int change, place;
-	cout<<"You can go upward OR check map(type 1) OR savegame and quit game(type 2) OR quit game without savegame(type 3) OR check bag(type 4)"
+	cout<<"You can go upward(type 0) OR check map(type 1) OR savegame and quit game(type 2) OR quit game without savegame(type 3) OR check bag(type 4)"
 	while (status!=0){
 	    cin>>change;
 	    if (change==1){
@@ -94,7 +94,7 @@ int main() {
 	    }
 	    if (char change==72){
 	        status++;
-		    cout<<"     |     "<<endl;
+		cout<<"     |     "<<endl;
 	        if (status%3==0 && status!=15){
 	            int nchoose=status%3;
 		    cout<<choose[num][0]<<"     "<<choose[num][1]<<endl;
@@ -108,7 +108,7 @@ int main() {
 	            break;
 	        }
 	    }
-	    if (char change!=72){
+	    if (change!=0){
 	        cout<<"You can go upward"<<endl;
 	        continue;
 	    }
