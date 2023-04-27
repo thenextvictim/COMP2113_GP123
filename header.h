@@ -45,6 +45,7 @@ struct shop_item {
 	int price;
 };
 
+/*
 extern monster Louse;
 extern monster Cultist;
 extern monster Looter;
@@ -60,13 +61,12 @@ extern shop_item Red_skull;
 extern shop_item Shuriken;
 extern shop_item Anchor;
 extern shop_item shop_item_relic_arr[4];
+*/
 
 void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold);
 
 
 // Portal.cpp
-extern const std::string Dividing_line = "-------------------------------------------------------------------\n";
-
 void Portal(int choose[][2], int position[2]);
 void randomEvent();
 
