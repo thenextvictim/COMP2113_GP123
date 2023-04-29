@@ -59,18 +59,24 @@ Bag: You can cheak your properties here along with your number of gold coins and
  When one of the fighters'HP <= 0, then fight is over.
           (your_name): In the name of justice, your guilty will be judged!
           Forest wolf: Bow-bow~
-    E.g.  Human warrior[DA:18~22, HP:100, DE:10) v.s. Forest wolf[DA:23~27, HP:60, DE:10)
-          1st round: Human warrior (your_name) attacks Forest wolf and make a hurt of -12 (48/60)
-                     Forest wolf attacks Human warrior and make a hurt of -17 (83/100)
-          2st round: Human warrior (your_name) attacks Forest wolf and make a hurt of -8 (40/60)
-                     Forest wolf attacks Human warrior and make a hurt of -13 (70/100)
-          3st round: Human warrior（your_name）attacks Forest wolf and make a hurt of -10 (30/60)
-                     Forest wolf attacks Human warrior and make a hurt of -15 (55/100)
-          4st round: Human warrior（your_name） attacks Forest wolf and make a hurt of -9 (21/60)
-                     Forest wolf attacks Human warrior and make a hurt of -16 (39/100)
-          5st round: Human warrior（your_name） attacks Forest wolf and make a hurt of -11 (10/60)
-                     Forest wolf attacks Human warrior and make a hurt of -14 (25/100)
-          6st round: Human warrior（your_name） attacks Forest wolf and make a hurt of -12 (0/60)
+    E.g.(not the final version but like)
+          1st round: 
+          Human warrior (your_name) attacks Forest wolf and make a hurt of -12 (48/60)
+          Forest wolf attacks Human warrior and make a hurt of -17 (83/100)
+          2st round: 
+          Human warrior (your_name) attacks Forest wolf and make a hurt of -8 (40/60)
+          Forest wolf attacks Human warrior and make a hurt of -13 (70/100)
+          3st round: 
+          Human warrior（your_name）attacks Forest wolf and make a hurt of -10 (30/60)
+          Forest wolf attacks Human warrior and make a hurt of -15 (55/100)
+          4st round: 
+          Human warrior（your_name） attacks Forest wolf and make a hurt of -9 (21/60)
+          Forest wolf attacks Human warrior and make a hurt of -16 (39/100)
+          5st round: 
+          Human warrior（your_name） attacks Forest wolf and make a hurt of -11 (10/60)
+          Forest wolf attacks Human warrior and make a hurt of -14 (25/100)
+          6st round: 
+          Human warrior（your_name） attacks Forest wolf and make a hurt of -12 (0/60)
           Forest wolf dies, you win.
           You gets 5 gold coins, a Magic armor.
           
