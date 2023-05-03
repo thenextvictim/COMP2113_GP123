@@ -6,7 +6,7 @@
 using namespace std;
 //place notations - 0: shop; 1: jump to other place; 2: monster
 int choice[5]={};
-int num=0, status=1, nchoice=0;
+int num, status, nchoice;
 int choose1[5], choose2[5];
 //choose1 is array with chooses on leftside, choose2 is array with chooses on rightside
 
@@ -79,7 +79,7 @@ void showmap(){
 
 int main() {
 	makepath();
-	int status=1, num=0;
+	int status=1, num=0, nchoice=0;
 	int change, place;
 	cout<<"You can go upward(input 0) OR check map(input 1) OR savegame and quit game(input 2) OR quit game without savegame(input 3) OR check bag(input 4)"<<endl;
 	while (status!=0){
