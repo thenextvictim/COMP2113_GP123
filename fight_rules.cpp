@@ -304,28 +304,3 @@ int fight(role role1, role role2){
             return e;
     }
 
-
-
-int main(){
-    role role1;
-    role role2;
-    role2.legend = "Forest wolf";
-    role2.damage = 15;
-    role2.health = 60;
-    role2.defense = 5;
-    role2.gold_coin = 0;
-    role2.weapon = "";
-    role2.armor = "";
-    role2.holly_relic = false;
-    role2.trash_talk[0] = "Bow-bow~";
-    role2.trash_talk[1] = "Wang-Wang~";
-    role2.trash_talk[2] = "Ouuuuuuuu~~~";
-    makerole(role1);
-    cout << "_______________________________________________________________" << endl;
-    display_bag(role1);
-    cout << "_______________________________________________________________" << endl;
-    fight(role1, role2);
-    cout << "________________________________________________________________" << endl;
-    cout << "Demo correctly, thanks Harry Deng." << endl;
-    return 0;
-}
