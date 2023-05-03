@@ -49,9 +49,9 @@ void map(int place){
         //shop system
     }
     if (place==1){
-	    if (status<11){
-        	status=status+rand()%(14-status);
-	    }
+	if (status<11){
+            status=status+rand()%(14-status);
+	}
     }
     if (place==2){
         //boss system
@@ -103,15 +103,14 @@ int main() {
 	        status++;
 		cout<<"     |     "<<endl;
 	        if (status%3==0 && status!=15){
-	            //int nchoose;
-		        cout<<choose1[num]<<"     "<<choose2[num]<<endl;
+		    cout<<choose1[num]<<"     "<<choose2[num]<<endl;
 	            choosedirection(num);
-		        num++;
+		    num++;
 	            map(place);
 	        }
 	        if (status==15){
 	            status=0;
-	            //final monster
+	            //final boss
 	            break;
 	        }
 	    }
