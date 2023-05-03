@@ -4,10 +4,11 @@
 #include<stdlib.h> 
 #include<time.h> 
 using namespace std;
-//0: shop; 1: jump to other place; 2: monster
+//place notations - 0: shop; 1: jump to other place; 2: monster
 int choice[5]={};
 int num=0, status=1, nchoice=0;
-int choose1[5], choose2[5], bifurcation[5]={0, 1, 2, 3, 4};
+int choose1[5], choose2[5];
+//choose1 is array with chooses on leftside, choose2 is array with chooses on rightside
 
 void makepath(){
     //int a[2], b[2], c[2], d[2], e[2];
