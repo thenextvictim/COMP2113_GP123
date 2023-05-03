@@ -48,12 +48,12 @@ int main(){
           if (change==4){
               display_bag(role role1);
           }
-          if ( change==0){
+          if (change==0){
               status++;
               cout<<"     |     "<<endl;
               if (status%3==0 && status!=15){
                   int nchoose=status%3;
-                  cout<<choose[num][0]<<"     "<<choose[num][1]<<endl;
+                  cout<<choose1[num]<<"     "<<choose2[num]<<endl;
                   choosedirection(nchoose);
                   num++;
                   map(place);
