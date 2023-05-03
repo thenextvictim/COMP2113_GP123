@@ -4,33 +4,38 @@
 #include<stdlib.h> 
 #include<time.h> 
 using namespace std;
-//0: awards; 1: jump to other place; 2: monster
+//0: shop; 1: jump to other place; 2: monster
 int choice[5]={};
+int num=0, status=1, nchoice=0;
+int choose1[5], choose2[5], bifurcation[5]={0, 1, 2, 3, 4};
 
 void makepath(){
-    int a[2], b[2], c[2], d[2], e[2];
-    int choose[5]={a,b,c,d,e};
+    //int a[2], b[2], c[2], d[2], e[2];
+    //int choose[5];
     for (int j=0; j<5; j++){
-        for (int i = 0; i < 2; ++i)
-            choose[j][i]=rand() % 3;
+        //for (int i = 0; i < 2; ++i)
+        choose1[j]=rand() % 3;
+	choose2[j]=rand() % 3;
     }
 }
 
 int choosedirection(int nchoose){
     int place;
     string sure;
-    cout<<"Choose your direction: Left OR Right"<<endl;
-    cin>>direction;
-    if (char direction==75){
+    cout<<"Choose your direction: Left (input 1) OR Right (intput 2)"<<endl;
+    cin>>int direction;
+    if (direction==1){
 	cout<<"|         ?"<<endl;
-        place=choose[nchoose][0];
+        place=choose1[nchoose];
+	choice[num]=1;
     }
-    if (char direction==77){
-        place=choose[nchoose][1];
+    if (direction==2){
+        place=choose2[nchoose];
 	cout<<"         |?"<<endl;
+	choice[num]=2;
     }
     cout<<"Are you sure? Yes Or No"<<endl;
-    cin<<sure;
+    cin>>sure;
     while (sure=="No"){
         choosedirection(nchoose);
     }
@@ -39,16 +44,15 @@ int choosedirection(int nchoose){
 
 void map(int place){
     if (place==0){
-        //awards system
+        //shop system
     }
     if (place==1){
 	if (status<11){
-		uniform_int_distribution<int> dis(status, 11);
-        	status=dis(r_eng);
+        	status=status+rand()%(14-status);
 	}
     }
     if (place==2){
-        //monster system
+        //boss system
     }
 }
 
@@ -58,14 +62,14 @@ void showmap(){
             cout<<"     |     "<<endl;
             break;
         }else{
-            if (choice[i]==0){
+            if (choice[i]==1){
                 cout<<"     |     "<<endl;
                 cout<<"|          "<<endl;
-                cout<<choose[i][0]<<"     "<<choose[i][1]<<endl;
+                cout<<choose1[i]<<"     "<<choose2[i]<<endl;
             }else{
                 cout<<"     |     "<<endl;
                 cout<<"          |"<<endl;
-                cout<<choose[i][0]<<"     "<<choose[i][1]<<endl;
+                cout<<choose1[i]<<"     "<<choose2[i]<<endl;
             }
         }
     }
@@ -76,7 +80,7 @@ int main() {
 	makepath();
 	int status=1, num=0;
 	int change, place;
-	cout<<"You can go upward(type 0) OR check map(type 1) OR savegame and quit game(type 2) OR quit game without savegame(type 3) OR check bag(type 4)"
+	cout<<"You can go upward(input 0) OR check map(input 1) OR savegame and quit game(input 2) OR quit game without savegame(input 3) OR check bag(input 4)"<<endl;
 	while (status!=0){
 	    cin>>change;
 	    if (change==1){
@@ -91,12 +95,12 @@ int main() {
 	    if (change==4){
 		//bagfunction;
 	    }
-	    if (char change==72){
+	    if (change==0){
 	        status++;
 		cout<<"     |     "<<endl;
 	        if (status%3==0 && status!=15){
-	            int nchoose=status%3;
-		    cout<<choose[num][0]<<"     "<<choose[num][1]<<endl;
+	            //int nchoose++;
+		    cout<<choose1[num]<<"     "<<choose2[num]<<endl;
 	            choosedirection(nchoose);
 		    num++;
 	            map(place);
