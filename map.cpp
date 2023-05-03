@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include<stdlib.h> 
+#include<time.h> 
 using namespace std;
-random_device rd;//用于生成随机数种子
-mt19937 r_eng(rd());//随机数生成器  
-uniform_int_distribution<int> dis(0, 2);//随机数分布器 闭区间
 //0: awards; 1: jump to other place; 2: monster
 int choice[5]={};
 
@@ -13,7 +12,7 @@ void makepath(){
     int choose[5]={a,b,c,d,e};
     for (int j=0; j<5; j++){
         for (int i = 0; i < 2; ++i)
-            choose[j][i]=dis(r_eng);
+            choose[j][i]=rand() % 3;
     }
 }
 
