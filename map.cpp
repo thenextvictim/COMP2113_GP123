@@ -5,8 +5,8 @@
 #include<time.h> 
 using namespace std;
 //place notations - 0: shop; 1: jump to other place; 2: monster
-int choice[5]={};
-int num, status, nchoice;
+int choice[5]={};//record players' choices
+int num, status;
 int choose1[5], choose2[5];
 //choose1 is array with chooses on leftside, choose2 is array with chooses on rightside
 
@@ -20,25 +20,26 @@ void makepath(){
     }
 }
 
-int choosedirection(int nchoose){
+int choosedirection(int num){
     int place;
-    string sure;
+    string answer;
     cout<<"Choose your direction: Left (input 1) OR Right (intput 2)"<<endl;
-    cin>>int direction;
+    int direction;
+    cin>>direction;
     if (direction==1){
-	cout<<"|         ?"<<endl;
-        place=choose1[nchoose];
-	choice[num]=1;
+	    cout<<"|         ?"<<endl;
+            place=choose1[num];
+	    choice[num]=1;
     }
     if (direction==2){
-        place=choose2[nchoose];
-	cout<<"         |?"<<endl;
-	choice[num]=2;
+            place=choose2[num];
+	    cout<<"         |?"<<endl;
+	    choice[num]=2;
     }
     cout<<"Are you sure? Yes Or No"<<endl;
-    cin>>sure;
-    while (sure=="No"){
-        choosedirection(nchoose);
+    cin>>answer;
+    while (answer=="No"){
+        choosedirection(num);
     }
     return place;
 }
@@ -48,9 +49,9 @@ void map(int place){
         //shop system
     }
     if (place==1){
-	if (status<11){
+	    if (status<11){
         	status=status+rand()%(14-status);
-	}
+	    }
     }
     if (place==2){
         //boss system
@@ -79,8 +80,10 @@ void showmap(){
 
 int main() {
 	makepath();
-	int status=1, num=0, nchoice=0;
+	int status=1, num=0;
+	//num is number of choices
 	int change, place;
+	//change are shown below in string
 	cout<<"You can go upward(input 0) OR check map(input 1) OR savegame and quit game(input 2) OR quit game without savegame(input 3) OR check bag(input 4)"<<endl;
 	while (status!=0){
 	    cin>>change;
@@ -100,10 +103,10 @@ int main() {
 	        status++;
 		cout<<"     |     "<<endl;
 	        if (status%3==0 && status!=15){
-	            //int nchoose++;
-		    cout<<choose1[num]<<"     "<<choose2[num]<<endl;
-	            choosedirection(nchoose);
-		    num++;
+	            //int nchoose;
+		        cout<<choose1[num]<<"     "<<choose2[num]<<endl;
+	            choosedirection(num);
+		        num++;
 	            map(place);
 	        }
 	        if (status==15){
