@@ -144,7 +144,7 @@ shop_item Magic_armor = {"Magic armor", "Raise your defense by 5", 50};
 shop_item Giant_armor = {"Giant armor", "Raise your defense by 10, 100};
 shop_item shop_item_armor[4] = {God_bless_armor, Standard_armor, Magic_armor, giant_armor};
 
-void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold) {
+void ShowShop_and_BuyItems(role role1) {
 	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. 'Give me the gold, and I'll give you the goods!', he says."<<endl;
 	shop_item potion, weapon, armor;
 	int choice, m = 0, n;
@@ -159,18 +159,18 @@ void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold) {
 
 	cout << potion.name << "  ";
 	cout << potion.description << "  ";
-	cout << "$" << potion.price << endl;
+	cout << "G" << potion.price << endl;
 	
 	cout << weapon.name << "  ";
 	cout << weapon.description << "  ";
-	cout << "$" << weapon.price << endl;
+	cout << "G" << weapon.price << endl;
 
 	cout << armor.name << "  ";
 	cout << armor.description << "  ";
-	cout << "$" << armor.price << endl;
-      // show four items, two potions and two relics in each shop.
+	cout << "G" << armor.price << endl;
+      // show 3 items,1 potions and 1 armor and 1 weapon in each shop.
 
-	shop_item shop_item_arr[3]= { potion, weapon, armor};
+	shop_item shop_item_arr[3]= {potion, weapon, armor};
 	int bought_items[3] = {};
 	cout << "Choose your preferred items! Enter number 1-3 for the products and 0 for exiting.";
 	while (buy_items) {
@@ -189,61 +189,61 @@ void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold) {
 				}
 			}
 			if (gold < shop_item_arr[choice].price) {                             // check whether the player has enough gold
-				cout << "'stop bothering me if don't have enough gold',said the gremlin";
+				cout << "'Stop bothering me if don't have enough gold.',said the gremlin";
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
 				if (shop_item_arr[choice].name == Blood_potion.name) {
-					HP += 20;
-					gold -= 40;
+					role1.health += 20;
+					role1.gold_coin -= 40;
 				}
 				if (shop_item_arr[choice].name == Attack_potion.name) {
-					attack += 5;
-					gold -= 30;
+					role1.attack += 5;
+					role1.gold_coin -= 30;
 				}
 				if (shop_item_arr[choice].name == Earth_potion.name) {
-					defense += 5;
-					gold -= 40;
+					role1.defense += 5;
+					role1.gold_coin -= 40;
 				}
 				if (shop_item_arr[choice].name == Thorn_potion.name) {
 					//block-=10 ？
-					gold -= 40;
+					role1.gold_coin -= 40;
 				}
 			}
 			if (check1 && check2 && choice == 2) {
 				if (shop_item_arr[choice].name == (Long_sword.name) {
-					attack+=5;
-					gold -= 50;
+					string thing=="Long sword";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Flintlock.name) {
-					attack += 8;
-					gold -= 70;
+				else if (shop_item_arr[choice].name == (Flintlock.name) {
+					string thing=="Flintlock";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Magic_stick.name) {
-					attack += 10;
-					gold -= 90;
+				else if (shop_item_arr[choice].name == (Magic_stick.name) {
+					string thing=="Magical stick";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Huge_axe.name) {
-					attack += 5;
-					gold -= 50;
+				else if (shop_item_arr[choice].name == (Huge_axe.name) {
+					string thing=="Huge axe";
+					change_proporties(role1, thing);
 				}
 			}
 			if (check1 && check2 && choice == 3) {
 				if (shop_item_arr[choice].name == (God_bless_armor.name) {
-					defense += 5;
-					gold -= 50;
+					string thing=="God-bless armor";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Standard_armor.name) {
-					attack += 8;
-					gold -= 80;
+				else if (shop_item_arr[choice].name == (Standard_armor.name) {
+					string thing=="Standard armor";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Magic_armor.name) {
-					defense += 5;
-					gold -= 50;
+				else if (shop_item_arr[choice].name == (Magic_armor.name) {
+					string thing=="Magic armor";
+					change_proporties(role1, thing);
 				}
-				if (shop_item_arr[choice].name == (Giant_armor.name) {
-					defense+=10;
-					gold -= 100;
+				else if (shop_item_arr[choice].name == (Giant_armor.name) {
+					string thing=="Giant armor";
+					change_proporties(role1, thing);
 				}
 			}
 		}
