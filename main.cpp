@@ -91,7 +91,7 @@ int main(){
                     else if (status==15){
                         status=0;
                         cout << "You meet the final boss of the maze." << endl;
-                        boss = create_dragon();
+                        role boss = create_dragon();
                         end = fight(role role1, role boss);
                         if (end==1){
                         //TE
