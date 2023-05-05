@@ -200,6 +200,7 @@ void ShowShop_and_BuyItems(role role1) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
 			}
 			if (check1 && check2 && choice == 2) {
 				if (shop_item_arr[choice].name == (Long_sword.name)) {
@@ -218,6 +219,7 @@ void ShowShop_and_BuyItems(role role1) {
 					thing=="Huge axe";
 					change_proporties(role1, thing);
 				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
 			}
 			if (check1 && check2 && choice == 3) {
 				if (shop_item_arr[choice].name == (God_bless_armor.name)) {
@@ -236,6 +238,7 @@ void ShowShop_and_BuyItems(role role1) {
 					thing=="Giant armor";
 					change_proporties(role1, thing);
 				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
 			}
 		}
 		bought_items[m] = choice;
