@@ -5,7 +5,7 @@
 #include <math.h>
 #include <cstdlib>
 #include <unistd.h>
-
+#include "header.h"
 using namespace std;
 /*
 struct role{
@@ -53,7 +53,7 @@ role makerole(role &role1){
         role1.damage = 30;
         role1.health = 70;
         role1.defense = 5;
-        role1.gold_coin = 20;
+        role1.gold_coin = 2000;
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
@@ -86,11 +86,11 @@ role makerole(role &role1){
 }
 
 void display_bag(role role1){
-      cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl:
+      cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
       cout << role1.legend << " " << role1.name << endl; 
-      cout << "Damage: " << role1.damage << ", " << "Health: " << role1.health << ", " << "Defense: " << role1.defense << ", " << "Gold coin: " << role1.gold_coin << endl;
-      cout << "Weapon: " << role1.weapon << ", " << "Armor: " << role1.armor << ", " << "Holly relic: " << role1.holly_relic << "." << endl; 
-      cout << "\033[31mDamagem: \033[0m" << role1.damage << ", " << "\033[32mHealth: \033[0m" << role1.health << ", " << "\033[34mDefense: \033[0m" << role1.defense << ", " << "\033[33mGold coin: \033[0m" << role1.gold_coin << endl;
+      //cout << "Damage: " << role1.damage << ", " << "Health: " << role1.health << ", " << "Defense: " << role1.defense << ", " << "Gold coin: " << role1.gold_coin << endl;
+      //cout << "Weapon: " << role1.weapon << ", " << "Armor: " << role1.armor << ", " << "Holly relic: " << role1.holly_relic << "." << endl; 
+      cout << "\033[31mDamage: \033[0m" << role1.damage << ", " << "\033[32mHealth: \033[0m" << role1.health << ", " << "\033[34mDefense: \033[0m" << role1.defense << ", " << "\033[33mGold coin: \033[0m" << role1.gold_coin << endl;
       cout << "\033[31mWeapon: \033[0m" << role1.weapon << ", " << "\033[34mArmor: \033[0m" << role1.armor << ", " << "\033[37mHolly relic: \033[0m" << role1.holly_relic << "." << endl; 
       cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
 }
@@ -131,7 +131,7 @@ string trophies(){
 
 }
 
-void change_proporties(role role1, string thing){
+void change_proporties(string thing){
     if (thing=="Long sword"){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
@@ -235,7 +235,7 @@ void change_proporties(role role1, string thing){
         }
 }
 
-int fight(role role1, role role2){
+int fight(role role2){
         int e; //exit game or not
         int round=1;
         int fight_health1= role1.health;
@@ -300,12 +300,12 @@ int fight(role role1, role role2){
         sleep(1);
     
         }
-        if (role2.legend == "Black_Dragon" && e=0){
+        if (role2.legend == "Black_Dragon"){
                 cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
                 e = 0;
             }
         else{
-            int get = rand()%((7)-(3)+1)+3;
+            int get = rand()%((37)-(30)+1)+30;
             string thing = trophies();
             cout << "You get " << get << " gold coins, and a " << thing << " ." << endl;
             role1.gold_coin = role1.gold_coin + get;
@@ -318,7 +318,7 @@ int fight(role role1, role role2){
                 cin >> a;
             }
             if (a == 1){
-            change_proporties(role1,thing);
+            change_proporties(thing);
             cout << "You are going on your journey with a happy mood:)." << endl;
             }
             else{
