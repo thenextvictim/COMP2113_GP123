@@ -94,6 +94,7 @@ int main(){
         }
 
         if (g){
+            end = 0;
             cout<< "1. [Move forward]\n"
                 << "2. [View the map]\n"
                 << "3. [Check your inventory]\n"
@@ -101,7 +102,7 @@ int main(){
                 << "5. [Quit the game without saving]\n";
                 
             
-            while (status!=0){
+            while (status!=0 && end == 0){
                 cin>>command;
                 //showmap
                 if (command=="2"){
@@ -158,10 +159,10 @@ int main(){
                             break;
                         case 2:
                             boss = create_monster();
-                            fight(boss);
+                            end = fight(boss);
                             break;
                         case 3:
-                            randomEvent();
+                            end = randomEvent();
                             break;
                         default:
                             cout << "Error in map." << endl;
@@ -184,9 +185,7 @@ int main(){
                             cin >> command;
                             break;
                         }
-                        cout << "Unfortunately, your character was defeated by the final boss.\n";
-                        cout << "It's a tough loss, but don't give up!\n";
-                        cout << "Keep trying and honing your skills, and success will come eventually.\n";
+                        
                     }
                     //cout<<"You can go upward(input 0) OR check map(input 1) OR savegame and quit game(input 2) OR quit game without savegame(input 3) OR check bag(input 4)" << endl;
                 }
@@ -195,7 +194,11 @@ int main(){
                     continue;
                 }
             }
-            
+            if (end == 1){
+                cout << "Unfortunately, your character was defeated.\n";
+                cout << "It's a tough loss, but don't give up!\n";
+                cout << "Keep trying and honing your skills, and success will come eventually.\n";
+            }
             
             //cout << "Please choose a existing game (Input 1) or choose a new game (Input 2) or quit the whole game(Input 0)" << endl;
             cout << "###################################" << endl;
