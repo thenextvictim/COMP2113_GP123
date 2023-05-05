@@ -33,6 +33,8 @@ role makerole(role &role1);
 void display_bag(role role1);
 std::string trophies();
 void change_proporties(std::string thing);
+void drop_weapon();
+void drop_armor();
 int fight(role role2);
 
 // gamesave.cpp
