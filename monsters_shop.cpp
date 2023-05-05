@@ -21,8 +21,8 @@ role create_monster(){
         Louse.armor = "Nothing";
         Louse.holly_relic = false;
         Louse.trash_talk[0] = "Whhhhhh~~~";
-        role1.trash_talk[1] = "Ohhhhhh~~~";
-        role1.trash_talk[2] = "Ehhhhhh~~~";
+        Louse.trash_talk[1] = "Ohhhhhh~~~";
+        Louse.trash_talk[2] = "Ehhhhhh~~~";
 	return Louse;
     }
     else if (k == 2){
@@ -42,9 +42,9 @@ role create_monster(){
     else if (k == 3){
         role Looter;
         Looter.legend = "Looter";
-        Looter.damage = 50;
-        Looter.health = 50;
-        Looter.defense = 0;
+        Looter.damage = 20;
+        Looter.health = 150;
+        Looter.defense = 5;
         Looter.weapon = "Nothing";
         Looter.armor = "Nothing";
         Looter.holly_relic = false;
@@ -55,10 +55,10 @@ role create_monster(){
     }
     else if (k == 4){
         role Gremlin_Nob;
-        Gremlin_Nob.legend = "Looter";
-        Gremlin_Nob.damage = 50;
-        Gremlin_Nob.health = 50;
-        Gremlin_Nob.defense = 0;
+        Gremlin_Nob.legend = "Gremlin Nob";
+        Gremlin_Nob.damage = 18;
+        Gremlin_Nob.health = 120;
+        Gremlin_Nob.defense = 12;
         Gremlin_Nob.weapon = "Nothing";
         Gremlin_Nob.armor = "Nothing";
         Gremlin_Nob.holly_relic = false;
@@ -69,10 +69,10 @@ role create_monster(){
     }
     else if (k == 5){
         role role2;
-        role2.legend = "Bronze_Automation";
+        role2.legend = "Bronze Automation";
         role2.damage = 13;
         role2.health = 200;
-        role2.defense = 12;
+        role2.defense = 8;
         role2.weapon = "Nothing";
         role2.armor = "Nothing";
         role2.holly_relic = false;
@@ -82,8 +82,8 @@ role create_monster(){
 	return role2;
     }
     else if (k == 0){
-            role role2;
-	    role2.legend = "Forest_wolf";
+        role role2;
+	    role2.legend = "Forest wolf";
 	    role2.damage = 15;
 	    role2.health = 60;
 	    role2.defense = 5;
@@ -102,9 +102,9 @@ role create_monster(){
 role create_dragon(){
 	role Black_Dragon;
 	Black_Dragon.legend = "Black_Dragon";
-	Black_Dragon.damage = 13;
+	Black_Dragon.damage = 25;
         Black_Dragon.health = 200;
-        Black_Dragon.defense = 12;
+        Black_Dragon.defense = 15;
         Black_Dragon.weapon = "Nothing";
         Black_Dragon.armor = "Nothing";
         Black_Dragon.holly_relic = false;
@@ -129,7 +129,7 @@ shop_item shop_item_potion_arr[3] = { Blood_potion ,Blood_potion ,Earth_potion};
 shop_item Long_sword = { "Long sword","Raise your strength by 5.",50 };
 shop_item Flintlock = { "Flintlock","Raise your strength by 8",70};
 shop_item Magical_stick = { "Magical stick","Raise your strength by 10",90};
-shop_item Huge_axe = { "Huge axe","Rsie your strength by 5", 50};
+shop_item Huge_axe = { "Huge axe","Raise your strength by 5", 50};
 shop_item shop_item_weapon_arr[4] = {Long_sword, Flintlock, Magical_stick, Huge_axe};
 
 shop_item God_bless_armor = {"God-bless armor", "Raise your defense by 5",50};
@@ -152,38 +152,41 @@ void ShowShop_and_BuyItems() {
 	potion = shop_item_potion_arr[index_potion];
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
-	cout << "Your gold: " << role1.gold_coin<<"  "<<endl;
+    cout << "Your gold: "  << "\033[33mG\033[0m" << role1.gold_coin<<"  "<<endl;
+    cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
+	
 	cout << potion.name << "  ";
 	cout << potion.description << "  ";
-	cout << "G" << potion.price << endl;
+	cout << "\033[33mG\033[0m" << potion.price << endl << endl;
 	
 	cout << weapon.name << "  ";
 	cout << weapon.description << "  ";
-	cout << "G" << weapon.price << endl;
+	cout << "\033[33mG\033[0m" << weapon.price << endl << endl;
 	cout << armor.name << "  ";
 	cout << armor.description << "  ";
-	cout << "G" << armor.price << endl;
+	cout << "\033[33mG\033[0m" << armor.price << endl << endl;
+    cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
       // show 3 items,1 potions and 1 armor and 1 weapon in each shop.
 	shop_item shop_item_arr[3]= {potion, weapon, armor};
 	int bought_items[3] = {};
-	cout << "Choose your preferred items! Enter number 1-3 for the products and 0 for exiting.";
+	cout << "Choose your preferred items! Enter number 1-3 for the products and 0 for exiting." << endl;
 	while (buy_items) {
 		bool check1 = true, check2 = true;
 		cin >> choice;
 		if (choice == 0) {
-			cout << "'Good luck.',said the gremlin and fades away in the cave.";
+			cout << "\"Good luck.\",said the gremlin and fades away in the cave." << endl;
 			buy_items = false;
 		}
 		else {
 			for (n = 0; n < m; n++) {
 				if (bought_items[n] == choice) {                                  // check whether the item is bought
-					cout << "The item is sold out! Choose another one !";
+					cout << "The item is sold out! Choose another one !" << endl;
 					check1= false;
 					break;
 				}
 			}
-			if (role1.gold_coin < shop_item_arr[choice].price) {                             // check whether the player has enough gold
-				cout << "'Stop bothering me if don't have enough gold.',said the gremlin";
+			if (role1.gold_coin < shop_item_arr[choice-1].price) {                             // check whether the player has enough gold
+				cout << "\"Stop bothering me if don't have enough gold.\",said the gremlin" << endl;
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
@@ -199,51 +202,58 @@ void ShowShop_and_BuyItems() {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+				cout<<"Thank you!, said the gremlin." << endl <<" Your gold: " << "\033[33mG\033[0m" << role1.gold_coin << endl;
+                bought_items[m] = choice;
+		        m++;
 			}
 			if (check1 && check2 && choice == 2) {
 				if (shop_item_arr[choice-1].name == (Long_sword.name)) {
-					thing=="Long sword";
+					thing="Long sword";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Flintlock.name)) {
-					thing=="Flintlock";
+					thing="Flintlock";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Magical_stick.name)) {
-					thing=="Magical stick";
+					thing="Magical stick";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Huge_axe.name)) {
-					thing=="Huge axe";
+					thing="Huge axe";
 					change_proporties(thing);
 				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+				role1.gold_coin -= shop_item_arr[choice-1].price;
+                cout<<"Thank you!, said the gremlin." << endl << " Your gold: \033[33mG\033[0m" <<role1.gold_coin << endl;
+                bought_items[m] = choice;
+		        m++;
 			}
 			if (check1 && check2 && choice == 3) {
 				if (shop_item_arr[choice-1].name == (God_bless_armor.name)) {
-					thing=="God-bless armor";
+					thing="God-bless armor";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Standard_armor.name)) {
-					thing=="Standard armor";
+					thing="Standard armor";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Magic_armor.name)) {
-					thing=="Magic armor";
+					thing="Magic armor";
 					change_proporties(thing);
 				}
 				else if (shop_item_arr[choice-1].name == (Giant_armor.name)) {
-					thing=="Giant armor";
+					thing="Giant armor";
 					change_proporties(thing);
 				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+				role1.gold_coin -= shop_item_arr[choice-1].price;
+                cout<<"\"Thank you!\", said the gremlin.\n"<<" Your gold: \033[33mG\033[0m" <<role1.gold_coin << endl;
+                bought_items[m] = choice;
+		        m++;
 			}
 		}
-		bought_items[m] = choice;
-		m++;
 	}
 }
+
 
 /*
 
@@ -296,41 +306,41 @@ void ShowShop_and_BuyItems() {
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
-				if (shop_item_arr[choice-1].name == Blood_potion.name) {
+				if (shop_item_arr[choice].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice-1].name == Attack_potion.name) {
+				if (shop_item_arr[choice].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice-1].name == Earth_potion.name) {
+				if (shop_item_arr[choice].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
             else if (check1 && check2 && choice==2){
-				if (shop_item_arr[choice-1].name == Blood_potion.name) {
+				if (shop_item_arr[choice].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice-1].name == Attack_potion.name) {
+				if (shop_item_arr[choice].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice-1].name == Earth_potion.name) {
+				if (shop_item_arr[choice].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
             else if (check1 && check2 && choice==3){
-				if (shop_item_arr[choice-1].name == Blood_potion.name) {
+				if (shop_item_arr[choice].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice-1].name == Attack_potion.name) {
+				if (shop_item_arr[choice].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice-1].name == Earth_potion.name) {
+				if (shop_item_arr[choice].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
