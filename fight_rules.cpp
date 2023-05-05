@@ -277,8 +277,19 @@ int fight(role role2){
         int round=1;
         int fight_health1= role1.health;
         int fight_health2= role2.health;
-        if (role2.legend == "Black_Dragon" && role1.holly_relic == true){
-            cout << 
+        if (role2.legend == "Black_Dragon" && role1.holly_relic == true){ 
+            cout << "It is a Huge Black_Dragon with fatal power. However, you strangely assume that it doesn't want to attack you." << endl;
+            cout << "Anyway, you have to win and get through this maze back home, right? So you still take your weapon and ready for the final battle." << endl;
+            cout << "The Holly relic in your bag suddenly turn warm and you surprisingly find that it flies out and attacks the dargon!" << endl;
+            cout << "The Black Dragon roars in pain. You find that its power seems to be lower and come to a mind that it is the time!!!" << endl;
+            fight_health2= fight_health2/2;
+            role1.holly_relic = false;
+            sleep(1);
+        }
+        else if (role2.legend == "Black_Dragon" && role1.holly_relic == true){ 
+            cout << "It is a Huge Black_Dragon with fatal power. However, you strangely assume that it doesn't want to attack you." << endl;
+            cout << "Anyway, you have to win and get through this maze back home, right? So you still take your weapon and ready for the final battle." << endl;
+            sleep(1);
         }
         int get;
         string a, thing;
