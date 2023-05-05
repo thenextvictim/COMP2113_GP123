@@ -300,7 +300,7 @@ int fight(role role1, role role2){
         sleep(1);
     
         }
-        if (role2.legend == "Black_Dragon"){
+        if (role2.legend == "Black_Dragon" && e=0){
                 cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
                 e = 0;
             }
