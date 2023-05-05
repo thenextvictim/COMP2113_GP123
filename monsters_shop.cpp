@@ -187,53 +187,53 @@ void ShowShop_and_BuyItems() {
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
+				if (shop_item_arr[choice-1].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
+				if (shop_item_arr[choice-1].name == Attack_potion.name) {
 					role1.damage += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
+				if (shop_item_arr[choice-1].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
 				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
 			}
 			if (check1 && check2 && choice == 2) {
-				if (shop_item_arr[choice].name == (Long_sword.name)) {
+				if (shop_item_arr[choice-1].name == (Long_sword.name)) {
 					thing=="Long sword";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Flintlock.name)) {
+				else if (shop_item_arr[choice-1].name == (Flintlock.name)) {
 					thing=="Flintlock";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Magical_stick.name)) {
+				else if (shop_item_arr[choice-1].name == (Magical_stick.name)) {
 					thing=="Magical stick";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Huge_axe.name)) {
+				else if (shop_item_arr[choice-1].name == (Huge_axe.name)) {
 					thing=="Huge axe";
 					change_proporties(thing);
 				}
 				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
 			}
 			if (check1 && check2 && choice == 3) {
-				if (shop_item_arr[choice].name == (God_bless_armor.name)) {
+				if (shop_item_arr[choice-1].name == (God_bless_armor.name)) {
 					thing=="God-bless armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Standard_armor.name)) {
+				else if (shop_item_arr[choice-1].name == (Standard_armor.name)) {
 					thing=="Standard armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Magic_armor.name)) {
+				else if (shop_item_arr[choice-1].name == (Magic_armor.name)) {
 					thing=="Magic armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice].name == (Giant_armor.name)) {
+				else if (shop_item_arr[choice-1].name == (Giant_armor.name)) {
 					thing=="Giant armor";
 					change_proporties(thing);
 				}
