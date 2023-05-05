@@ -345,6 +345,7 @@ int fight(role role2){
                     break;
                 }
             }
+        
             cout << "You find " << get << " gold coins, and a " << thing << " ." << endl;
             cout << "Do you want to equip " << thing << " or not?" << " IF yes, please enter 1. If no, please enter 0." << endl;
             cin >> a;
@@ -354,13 +355,19 @@ int fight(role role2){
             }
             if (a == "1"){
             change_proporties(thing);
+            cout << "You are going on your journey with a happy mood:)." << endl;
+            }
+            else{
+            cout << "You are going on your journey with a soso mood:|." << endl;     
+            }
+            e = 0;
         }
-        if (role2.legend == "Black_Dragon" && e == 0){
+        else if (role2.legend == "Black_Dragon" && e == 0){
                 cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
                 e = 0;
             }
         else if(role2.legend == "Black_Dragon" && e == 1){
-            cout << "You defeat the final boss!" << endl;
+            cout << "The Dragon laughs at your body for a moment, but sighs after that......" << endl;
         }
         else if (e == 0){
             get = rand()%((37)-(30)+1)+30;
@@ -386,7 +393,7 @@ int fight(role role2){
         // fight is all over, if exit = 0, game continue, else, game over
         return e;
     }
-}
+
 
 /*
 Demo, not used in final version.
