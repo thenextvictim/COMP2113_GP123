@@ -39,8 +39,9 @@ int main(){
             fin.open("game_menu.txt");
             g = true;
             if (fin.fail()){
-                cout << "No existing game, please create a game first.";
+                cout << "No existing game, please create a game first." << endl;
                 g = false;
+                cin >> command;
             }
             else {
                 savename = choosegame();
@@ -143,7 +144,7 @@ int main(){
                         //map(place);
                         switch (place){
                         case 0:
-                            ShowShop_and_BuyItems(role1);
+                            ShowShop_and_BuyItems();
                             break;
                         case 1:
                             if (status<11){
@@ -155,10 +156,10 @@ int main(){
                             break;
                         case 2:
                             boss = create_monster();
-                            fight(role1,boss);
+                            fight(boss);
                             break;
                         case 3:
-                            randomEvent(role1);
+                            randomEvent();
                             break;
                         default:
                             cout << "Error in map." << endl;
@@ -170,7 +171,7 @@ int main(){
                         status=0;
                         cout << "You meet the final boss of the maze." << endl;
                         boss = create_dragon();
-                        end = fight(role1, boss);
+                        end = fight(boss);
                         if (end==0){
                         //TE
                             cout << "You defeat the boss, but youself become the new Prince of the Devils." << endl;
