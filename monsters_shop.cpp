@@ -153,6 +153,7 @@ void ShowShop_and_BuyItems(role role1) {
 	potion = shop_item_potion_arr[index_potion];
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
+	cout << "Your gold: " << gold;
 	cout << potion.name << "  ";
 	cout << potion.description << "  ";
 	cout << "G" << potion.price << endl;
