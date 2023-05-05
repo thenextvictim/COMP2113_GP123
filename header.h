@@ -7,8 +7,13 @@
 // map.cpp
 void makepath();
 int choosedirection(int nchoose);
-void map(int place);
 void showmap();
+extern int choice[5];
+extern int num;
+extern int status;
+extern int choose1[5];
+extern int choose2[5];
+void drawlRoad(int num);
 
 // fight_rules.cpp
 struct role{
@@ -23,51 +28,28 @@ struct role{
     bool holly_relic;
     std::string trash_talk[3];
 };
+extern role role1;
 role makerole(role &role1);
 void display_bag(role role1);
 std::string trophies();
-void change_proporties(role role1, std::string thing);
-int fight(role role1, role role2);
+void change_proporties(std::string thing);
+int fight(role role2);
 
 // gamesave.cpp
-// :'(
+void gamesave();
+bool loadgame(std::string savename);
+std::string choosegame();
 
-// monster_shop.cpp
-struct monster {
-	std::string name;
-	int HP;
-	int attack;
-	int defense;
-	int gold;
-};
-struct shop_item {
-	std::string description;
-	int price;
-};
-
-/*
-extern monster Louse;
-extern monster Cultist;
-extern monster Looter;
-extern monster Gremlin_Nob;
-extern monster Bronze_Automation;
-extern shop_item Blood_potion;
-extern shop_item Attack_potion;
-extern shop_item Earth_potion;
-extern shop_item Thorn_potion;
-extern shop_item shop_item_potion_arr[4];
-extern shop_item Toy_Ornithopter;
-extern shop_item Red_skull;
-extern shop_item Shuriken;
-extern shop_item Anchor;
-extern shop_item shop_item_relic_arr[4];
-*/
-
-void ShowShop_and_BuyItems(int HP,int attack,int defense,int gold);
+// event.cpp
+extern std::string continue_road[4];
+extern const std::string Dividing_line;
+role create_monster();
+role create_dragon();
+void ShowShop_and_BuyItems();
 
 
 // Portal.cpp
-void Portal(int choose[][2], int position[2]);
+void Portal(int& num, int& status);
 void randomEvent();
 
 
