@@ -24,6 +24,7 @@ struct role{
 role role1;
 
 */
+
 role role1;
 
 void gamesave(){
@@ -61,14 +62,14 @@ void gamesave(){
         // role
         fout << status << " " << num << endl;
         //fout << "role1" << " ";
-        fout << role1.legend << " " ;
-        fout << role1.name << " " ;
+        fout << role1.legend << "\n" ;
+        fout << role1.name << "\n" ;
         fout << role1.damage << " " ;
         fout << role1.health << " " ;
         fout << role1.defense << " " ;
-        fout << role1.gold_coin << " " ;
-        fout << role1.weapon << " " ;
-        fout << role1.armor << " " ;
+        fout << role1.gold_coin << "\n" ;
+        fout << role1.weapon << "\n" ;
+        fout << role1.armor << "\n" ;
         fout << role1.holly_relic << " " << endl;;
         for (int i=0; i<3; i++){
             fout << role1.trash_talk[i] << endl;
@@ -129,23 +130,28 @@ bool loadgame(string savename){
     else {
         for (int i=0; i<5; i++){
             fin >> data;
+            
             choose1[i] = data;
         }
         for (int i=0; i<5; i++){
             fin >> data;
+            
             choose2[i] = data;
         }
+        
         for (int i=0; i<5; i++){
             fin >> data;
+            
             choice[i] = data;
         }
         fin >> data;
         status = data;
         fin >> data;
         num = data;
-        fin >> data_str;
+        getline(fin,data_str);
+        getline(fin,data_str);
         role1.legend = data_str;
-        fin >> data_str;
+        getline(fin,data_str);
         role1.name = data_str;
         fin >> data;
         role1.damage = data;
@@ -155,9 +161,11 @@ bool loadgame(string savename){
         role1.defense = data;
         fin >> data;
         role1.gold_coin = data;
-        fin >> data_str;
+        getline(fin,data_str);
+        getline(fin,data_str);
         role1.weapon = data_str;
-        fin >> data_str;
+        //getline(fin,data_str);
+        getline(fin,data_str);
         role1.armor = data_str;
         fin >> data;
         role1.holly_relic = data;
