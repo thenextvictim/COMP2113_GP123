@@ -130,12 +130,42 @@ string trophies(){
     }
 
 }
+void drop_weapon(){
+    if (role1.weapon == "Long sword"){
+        role1.damage = role1.damage-5;
+    }
+    else if(role1.weapon == "Flintlock"){
+        role1.damage = role1.damage-8;
+    }
+    else if(role1.weapon == "Magical stick"){
+        role1.damage = role1.damage-10;
+    }
+    else if(role1.weapon == "Huge axe"){
+        role1.damage = role1.damage-5;
+    }
+}
+
+void drop_armor(){
+    if (role1.armor == "God-bless armor"){
+        role1.defense = role1.defense-5;
+    }
+    else if(role1.armor == "Standard armor"){
+        role1.defense = role1.defense-8;
+    }
+    else if(role1.armor == "Magic armor"){
+        role1.defense = role1.defense-5;
+    }
+    else if(role1.armor == "Giant armor"){
+        role1.defense = role1.defense-10;
+    }
+}
 
 void change_proporties(string thing){
     if (thing=="Long sword"){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
             }
+        drop_weapon();
         role1.weapon = "Long sword";
         role1.damage = role1.damage+5;
     // Long sword: +5 damage, every legend can use.
@@ -145,6 +175,7 @@ void change_proporties(string thing){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
             }
+        drop_weapon();
         role1.weapon = "Flintlock";
         role1.damage = role1.damage+8;
     // Flintlock: +8 damage, only can be used by human warrior.
@@ -154,6 +185,7 @@ void change_proporties(string thing){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
             }
+        drop_weapon();
         role1.weapon = "Magical stick";
         role1.damage = role1.damage+10;
     // Magical stick: +10 damage, only can be used by elf magician.
@@ -163,6 +195,7 @@ void change_proporties(string thing){
         if (role1.weapon != "Nothing"){
             cout << "You dropped " << role1.weapon << "and you lose it forever.";
             }
+        drop_weapon();
         role1.weapon = "Huge axe";
         role1.damage = role1.damage+5;
     // Huge axe： +5 damage， only can be used by giant tank.
@@ -172,6 +205,7 @@ void change_proporties(string thing){
         if (role1.armor != "Nothing"){
             cout << "You dropped " << role1.armor << "and you lose it forever.";
             }
+        drop_armor();
         role1.armor = "God-bless armor";
         role1.defense = role1.defense+5;
     // God-bless armor: +5 defense, every legend can use.
@@ -181,6 +215,7 @@ void change_proporties(string thing){
         if (role1.armor != "Nothing"){
             cout << "You dropped " << role1.armor << "and you lose it forever.";
             }
+        drop_armor();
         role1.armor = "Standard armor";
         role1.defense = role1.defense+8;
     // Standard armor: +8 defense, only can be used by human warrior.
@@ -190,6 +225,7 @@ void change_proporties(string thing){
         if (role1.armor != "Nothing"){
             cout << "You dropped " << role1.armor << "and you lose it forever.";
             }
+        drop_armor();
         role1.armor = "Magic armor";
         role1.defense = role1.defense +5;
     // Magic armor： +5 defense, only can be used by elf magician.
@@ -199,6 +235,7 @@ void change_proporties(string thing){
         if (role1.armor != "Nothing"){
             cout << "You dropped " << role1.armor << "and you lose it forever.";
             }
+        drop_armor();
         role1.armor = "Giant armor";
         role1.defense = role1.defense +10;
     // Giant armor: +10 defense, only can be uesd by giant tank.
@@ -240,6 +277,9 @@ int fight(role role2){
         int round=1;
         int fight_health1= role1.health;
         int fight_health2= role2.health;
+        if (role2.legend == "Black_Dragon" && role1.holly_relic == true){
+            cout << 
+        }
         int get;
         string a, thing;
         // holly
