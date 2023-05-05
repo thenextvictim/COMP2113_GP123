@@ -50,7 +50,7 @@ void ShowShop_and_BuyItems();
 
 // Portal.cpp
 void Portal(int& num, int& status);
-void randomEvent();
+int randomEvent();
 
 
 #endif
