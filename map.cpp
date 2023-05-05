@@ -54,9 +54,7 @@ int choosedirection(int num){
 void showmap(){
     for (int i=0; i<num; i++){
         if (status<3){
-	    cout<<"\033[32mYou go on a step!\033[0m"<<endl;
-            cout<<"     |     "<<endl;
-	    cout<<"     |     "<<endl;
+	    ccout<<"     |     "<<endl;
             break;
         }
         else {
