@@ -165,25 +165,22 @@ void ShowShop_and_BuyItems() {
 	potion = shop_item_potion_arr[index_potion];
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
-    cout << "Your gold: "  << "\033[33mG\033[0m" << role1.gold_coin<<"  "<<endl;
+    shop_item shop_item_arr[3]= {potion, weapon, armor};
     cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
-	
-	cout << potion.name << "  ";
-	cout << potion.description << "  ";
-	cout << "\033[33mG\033[0m" << potion.price << endl << endl;
-	
-	cout << weapon.name << "  ";
-	cout << weapon.description << "  ";
-	cout << "\033[33mG\033[0m" << weapon.price << endl << endl;
-	cout << armor.name << "  ";
-	cout << armor.description << "  ";
-	cout << "\033[33mG\033[0m" << armor.price << endl << endl;
+    for (int i=0; i<3; i++){
+        cout << left;
+        cout << "\033[1;34m" << setw(15) << shop_item_arr[i].name << "\033[0m";
+        cout << right;
+        cout << setw(8)  << "\033[33mG"  << shop_item_arr[i].price << "\033[0m" << endl;
+        cout << shop_item_arr[i].description << endl;
+    }
     cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
       // show 3 items,1 potions and 1 armor and 1 weapon in each shop.
-	shop_item shop_item_arr[3]= {potion, weapon, armor};
+	
 	int bought_items[3] = {};
 	cout << "Choose your preferred items! Enter number 1-3 for the products and 0 for exiting." << endl;
 	while (buy_items) {
+        cout << setw(30) << right << "Your gold : " << "\033[33mG" << role1.gold_coin << "\033[0m" << endl;
 		bool check1 = true, check2 = true;
 		cin >> choice;
 		if (choice == 0) {
@@ -266,7 +263,6 @@ void ShowShop_and_BuyItems() {
 		}
 	}
 }
-
 
 /*
 
