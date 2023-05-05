@@ -113,7 +113,20 @@ role create_dragon(){
         Black_Dragon.trash_talk[2] = "Why me here? Why you here?";
 	return Black_Dragon;
     }
-
+role create_Mimic(){
+	role Mimic;
+	Mimic.legend = "Mimic";
+	Mimic.damage = 20;
+    Mimic.health = 100;
+    Mimic.defense = 5;
+    Mimic.weapon = "Nothing";
+    Mimic.armor = "Nothing";
+    Mimic.holly_relic = false;
+    Mimic.trash_talk[0] = "This is your last treasure hunt.";
+    Mimic.trash_talk[1] = "*Mimic Groans* \"You've awoken me from my slumber...\"";
+    Mimic.trash_talk[2] = "*Mimic Laughs* \"Foolish adventurer...you fell right into my trap!\"";
+	return Mimic;
+}
 
 struct shop_item {
     string name;
@@ -475,8 +488,11 @@ void Golden_Shrine(){
     getline(cin,command);
 }
 
-void Treasure_chest(){
+int Treasure_chest(){
     string command;
+    string thing;
+    int end = 0;
+    role Mimic;
     bool mimic = (rand() % 2 == 1);
     if (mimic){
         // Mimic
@@ -504,14 +520,8 @@ void Treasure_chest(){
             if (command == "1"){
                 cout << "Steel yourself for the coming fight!\n";
                 // Fight
-                // if Win:
-                    cout << "With a final blow, you vanquish the gruesome mimic.\n"
-                        << "You discover a hoard of treasure within the remains, including a rare piece of equipment.\n";
-                    role1.gold_coin += 200 + rand()%50;
-                    // Get Equitment
-                // if Lose
-                    // endGame();
-
+                Mimic = create_Mimic();
+                end = fight(Mimic);
             }
             else if (command == "2"){
                 cout << "You turn tail and run as fast as you can, barely escaping the clutches of the mimic.\n";
@@ -521,8 +531,11 @@ void Treasure_chest(){
             cout << "You wisely choose to back away from the dangerous-looking chest.\n";
         }
         //cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-        cout << Dividing_line << continue_input_2[rand()%(sizeof(continue_input_2)/sizeof(continue_input_2[0]))] << endl;
-        getline(cin,command);
+        if (end == 0){
+            cout << Dividing_line << continue_input_2[rand()%(sizeof(continue_input_2)/sizeof(continue_input_2[0]))] << endl;
+            getline(cin,command);
+        }
+        return end;
     }
     else {
         // Treasure Chest
@@ -538,18 +551,58 @@ void Treasure_chest(){
         cout << Dividing_line;
         if (command == "1"){
             cout << "You successfully pry open the chest, revealing a trove of treasure within: gold coins, gems, and a valuable piece of equipment.\n";
-            role1.gold_coin += 90 + rand()%20;
-            // Get an equipment;
+            role1.gold_coin += 100 + rand()%20;
+            if (role1.weapon == "Nothing"){
+                thing = "Long sword";
+            }
+            else if (role1.armor == "Nothing"){
+                thing = "God-bless armor";
+            }
+            else {
+                switch (rand())
+                {
+                case 0:
+                    thing = "Flintlock";
+                    break;
+                case 1:
+                    thing = "Standard armor";
+                    break;
+                case 2:
+                    thing = "Magical stick";
+                    break;
+                case 3:
+                    thing = "Magic armor";
+                    break;
+                case 4:
+                    thing = "Huge axe";
+                    break;
+                case 5:
+                    thing = "Giant armor";
+                    break;
+                default:
+                    break;
+                }
+            }
+            cout << "Do you want to equip " << thing << " or not?" << " IF yes, please enter 1. If no, please enter 0." << endl;
+            cin >> command;
+            while (command != "0" && command != "1"){
+                cout << "Error. Please input a correct number." << endl;
+                cin >> command;
+            }
+            if (command == "1"){
+            change_proporties(thing);
+            }
+            else if (command == "2"){
+                cout << "You decide to leave the chest alone and continue on your way.\n";
+            }
+            //cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
+            cout << Dividing_line << continue_input_1[rand()%(sizeof(continue_input_1)/sizeof(continue_input_1[0]))] << endl;
+            getline(cin,command);
+            return 0;
         }
-        else if (command == "2"){
-            cout << "You decide to leave the chest alone and continue on your way.\n";
-        }
-        //cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
-        cout << Dividing_line << continue_input_1[rand()%(sizeof(continue_input_1)/sizeof(continue_input_1[0]))] << endl;
-        getline(cin,command);
+        return 0;
     }
 }
-
 void Lab(){
     string command;
     int index[3]={0,0,0};
@@ -597,17 +650,20 @@ void Lab(){
     getline(cin,command);
 }
 
-void randomEvent(){
+int randomEvent(){
+    int end;
     switch (rand()%3)
     {
     case 0:
         Golden_Shrine();
         break;
     case 1:
-        Treasure_chest();
+        end = Treasure_chest();
+        return end;
         break;
     case 2:
         Lab();
         break;
     }
+    return 0;
 }
