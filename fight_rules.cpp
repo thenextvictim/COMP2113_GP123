@@ -240,6 +240,8 @@ int fight(role role2){
         int round=1;
         int fight_health1= role1.health;
         int fight_health2= role2.health;
+        int get;
+        string a, thing;
         // holly
         // legend attacks first
         int i, j;
@@ -298,6 +300,61 @@ int fight(role role2){
         sleep(1);
     
         }
+        if (role2.name == "Mimic" && e == 0){
+            cout << "With a final blow, you vanquish the gruesome mimic.\n"
+                 << "You discover a hoard of treasure within the remains, including a rare piece of equipment.\n";
+            
+            200 + rand()%50;
+            role1.gold_coin += get;
+            if (role1.legend == "Human warrior"){
+                switch (rand()%2)
+                {
+                case 0:
+                    thing = "Flintlock";
+                    break;
+                case 1:
+                    thing = "Standard armor";
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (role1.legend == "Elf magician"){
+                switch (rand()%2)
+                {
+                case 0:
+                    thing = "Magical stick";
+                    break;
+                case 1:
+                    thing = "Magic armor";
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (role1.legend == "Giant tank"){
+                switch (rand()%2)
+                {
+                case 0:
+                    thing = "Huge axe";
+                    break;
+                case 1:
+                    thing = "Giant armor";
+                    break;
+                default:
+                    break;
+                }
+            }
+            cout << "You find " << get << " gold coins, and a " << thing << " ." << endl;
+            cout << "Do you want to equip " << thing << " or not?" << " IF yes, please enter 1. If no, please enter 0." << endl;
+            cin >> a;
+            while (a != "0" && a != "1"){
+                cout << "Error. Please input a correct number." << endl;
+                cin >> a;
+            }
+            if (a == "1"){
+            change_proporties(thing);
+        }
         if (role2.legend == "Black_Dragon" && e == 0){
                 cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
                 e = 0;
@@ -305,20 +362,19 @@ int fight(role role2){
         else if(role2.legend == "Black_Dragon" && e == 1){
             cout << "You defeat the final boss!" << endl;
         }
-        else{
-            int get = rand()%((37)-(30)+1)+30;
-            string thing = trophies();
+        else if (e == 0){
+            get = rand()%((37)-(30)+1)+30;
+            thing = trophies();
             cout << "You get " << get << " gold coins, and a " << thing << " ." << endl;
             role1.gold_coin = role1.gold_coin + get;
             // Choose to equip the new spoil or not
             cout << "Do you want to equip " << thing << " or not?" << " IF yes, please enter 1. If no, please enter 0." << endl;
-            int a;
             cin >> a;
-            while (a != 0 && a != 1){
+            while (a != "0" && a != "1"){
                 cout << "Error. Please input a correct number." << endl;
                 cin >> a;
             }
-            if (a == 1){
+            if (a == "1"){
             change_proporties(thing);
             cout << "You are going on your journey with a happy mood:)." << endl;
             }
@@ -328,8 +384,9 @@ int fight(role role2){
             e = 0;
         }
         // fight is all over, if exit = 0, game continue, else, game over
-            return e;
+        return e;
     }
+}
 
 /*
 Demo, not used in final version.
