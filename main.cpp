@@ -177,7 +177,7 @@ int main(){
                         end = fight(boss);
                         if (end==0){
                         //TE
-                            cout << "You defeat the boss, but youself become the new Prince of the Devils." << endl;
+                            cout << "You defeat the boss, but youself become the new Dragon, with craws and wings suddenly born from your body, you finally know everything but too late......" << endl;
                             cout << "You get to end of the maze and your soul is pulled to a unknown place again......" << endl;
                             //制作名单
                             cout << "Thanks for playing!" << endl;
