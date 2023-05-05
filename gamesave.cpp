@@ -2,174 +2,232 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "header.h"
 
 using namespace std;
 
-// define constant variables
 
-const int Max_Items_In_Bag = 8;
-const int Max_Items_In_Shop = 4;
-const int Max_Weapon_In_Equipment = 1;
-const int Max_Armor_In_Equipment = 1; // all to be modified
-
-enum itemType {
-    Weapon, Armor, Potion,
-};
-
-ostream &operator<<(ostream &os, const itemType &item) {
-    if (item == Weapon) os << "Weapon";
-    else if (item == Armor) os << "Armor";
-    else if (item == Potion) os << "Potion";
-    return os;
-}
-
-istream &operator>>(istream &input, itemType &item) {
-    string s;
-    input >> s;
-    if (s == "Weapon") item = Weapon;
-    else if (s == "Armor") item = Armor;
-    else if (s == "Potion") item = Potion;
-    return input;
-}
-
-enum itemRarity {
-    Ordinary, Excellent, Epic, Legendary, Myth
-};
-
-ostream &operator<<(ostream &os, const itemRarity &item) {
-    if (item == Ordinary) os << "Ordinary";
-    else if (item == Excellent) os << "Excellent";
-    else if (item == Epic) os << "Epic";
-    else if (item == Legendary) os << "Legendary";
-    else if (item == Myth) os << "Myth";
-    return os;
-}
-
-istream &operator>>(istream &input, itemRarity &item) {
-    string s;
-    input >> s;
-    if (s == "Ordinary") item = Ordinary;
-    else if (s == "Excellent") item = Excellent;
-    else if (s == "Epic") item = Epic;
-    else if (s == "Legendary") item = Legendary;
-    else if (s == "Myth") item = Myth;
-    return input;
-}
-
-// define Characters
-
-struct Character {
+/*
+struct role{
+    string legend;
     string name;
-    int hp;
-    int attack;
+    int damage;
+    int health;
     int defense;
-    int gold;
-    int x;
-    int y; //Position on the Map
-    vector<string> bag;
-    vector<string> equipment;
+    int gold_coin;
+    string weapon;
+    string armor;
+    bool holly_relic;
+    string trash_talk[3];
+};
 
-    /*
-    vector<Effect> buff;
-    */
+role role1;
 
-    friend ostream &operator<<(ostream &os, const Character &character) {
-        os << character.name << " " << character.hp
-           << " " << character.attack << " "
-           << character.defense << " " << character.gold << " "
-           << character.x << " " << character.y;
+*/
+role role1;
+
+void gamesave(){
+    ofstream fout;
+    string savename,data;
+    bool if_exist;
+    cout << "Please input your game name." << endl;
+    cin >> savename;
+    fout.open(savename.c_str());
+
+    if(fout.fail()){
+        cout << "Error in opening the file." << endl;
+        fout.close();
+    }
+    else{
+        // map.cpp
+        //fout << "choose1" << " ";
+        for (int i=0; i<5;i++){
+            fout << choose1[i] << " ";
+        }
+        fout << endl;
+
+        //fout << "choose2" << " ";
+        for (int i=0; i<5;i++){
+            fout << choose2[i] << " ";
+        }
+        fout << endl;
+
+        //fout << "choice" << " ";
+        for (int i=0; i<5;i++){
+            fout << choice[i] << " ";
+        }
+        fout << endl;
+
+        // role
+        fout << status << " " << num << endl;
+        //fout << "role1" << " ";
+        fout << role1.legend << " " ;
+        fout << role1.name << " " ;
+        fout << role1.damage << " " ;
+        fout << role1.health << " " ;
+        fout << role1.defense << " " ;
+        fout << role1.gold_coin << " " ;
+        fout << role1.weapon << " " ;
+        fout << role1.armor << " " ;
+        fout << role1.holly_relic << " " << endl;;
+        for (int i=0; i<3; i++){
+            fout << role1.trash_talk[i] << endl;
+        }
+        cout << "This game is saved." << endl;
+        fout.close();
+        ifstream fin;
+        fin.open("game_menu.txt");
+        while (fin >> data){
+            if (data == savename){
+                if_exist = true;
+            }
+        }
+        fin.close();
+        if (if_exist == false){
+            fout.open("game_menu.txt", ios::app);
+            fout << savename << endl;
+            fout.close();
+        }
+    }
+}
+
+string choosegame(){
+    ifstream fin;
+    vector<string> savenames;
+    fin.open("game_menu.txt");
+    string savename;
+    int index;
+    bool check = false;
+    cout << "Existing games are as follows: " << endl;
+    index = 1;
+    while(fin >> savename){
+        cout << index << ". " << savename << endl;
+        savenames.push_back(savename);
+        index++;
+    }
+    cout << "Please choose a game." << endl;
+    cin >> index;
+    while (index <= 0 || index > savenames.size()){
+        cout << "Game does not exist, please try again." << endl;
+        cin >> index;
+    }
+    cout << "Load successfully." << endl;
+    fin.close();
+    return savenames[index-1];
+}
+
+bool loadgame(string savename){
+    ifstream fin;
+    int data;
+    string data_str;
+    fin.open(savename.c_str());
+    if (fin.fail()){
+        fin.close();
+        cout << "Error in opening the file." << endl;
+        return false;
+    }
+    else {
+        for (int i=0; i<5; i++){
+            fin >> data;
+            choose1[i] = data;
+        }
+        for (int i=0; i<5; i++){
+            fin >> data;
+            choose2[i] = data;
+        }
+        for (int i=0; i<5; i++){
+            fin >> data;
+            choice[i] = data;
+        }
+        fin >> data;
+        status = data;
+        fin >> data;
+        num = data;
+        fin >> data_str;
+        role1.legend = data_str;
+        fin >> data_str;
+        role1.name = data_str;
+        fin >> data;
+        role1.damage = data;
+        fin >> data;
+        role1.health = data;
+        fin >> data;
+        role1.defense = data;
+        fin >> data;
+        role1.gold_coin = data;
+        fin >> data_str;
+        role1.weapon = data_str;
+        fin >> data_str;
+        role1.armor = data_str;
+        fin >> data;
+        role1.holly_relic = data;
+        getline(fin,data_str);
+        for (int i=0; i<3; i++){
+            getline(fin,data_str);
+            role1.trash_talk[i] = data_str;
+        }
+        fin.close();
+        return true;
+    }
+    fin.close();
+    return false;    
+}
 
 
-        os << " " << character.bag.size() << " ";
-        for (const auto &i : character.bag) {
-            os << i << " ";
+/*
+int main(){
+        role1.legend = "Human warrior";
+        role1.damage = 20;
+        role1.health = 100;
+        role1.defense = 10;
+        role1.gold_coin = 10;
+        role1.weapon = "Nothing";
+        role1.armor = "Nothing";
+        role1.holly_relic = false;
+        role1.trash_talk[0] = "In the name of justice, your guilty will be judged!";
+        //“星星之火，可以燎原。”
+        role1.trash_talk[1] = "A single spark can start a prairie fire";
+        //"失去人性，失去很多。失去兽性，失去一切。"
+        role1.trash_talk[2] = "Lose humanity, lose much. Lose animalistic nature, lose all.";
+    string savename;   
+    gamesave();
+    savename = choosegame();
+    loadgame(savename);
+    cout << "choose1:" << endl;
+    for (int i=0; i<5;i++){
+            cout << choose1[i] << " ";
+        }
+        cout << endl;
+
+        cout << "choose2:" << " ";
+        for (int i=0; i<5;i++){
+            cout << choose2[i] << " ";
+        }
+        cout << endl;
+
+        cout << "choice" << " ";
+        for (int i=0; i<5;i++){
+            cout << choice[i] << " ";
+        }
+        cout << endl;
+
+        // role
+        cout << "status:" << " ";
+        cout << status << endl;
+        cout << "role1" << " ";
+        cout << role1.legend << " " ;
+        cout << role1.name << " " ;
+        cout << role1.damage << " " ;
+        cout << role1.health << " " ;
+        cout << role1.defense << " " ;
+        cout << role1.gold_coin << " " ;
+        cout << role1.weapon << " " ;
+        cout << role1.armor << " " ;
+        cout << role1.holly_relic << " " << endl;
+        for (int i=0; i<3; i++){
+            cout << role1.trash_talk[i] << " " << endl;
         }
 
-        os << character.equipment.size() << " ";
-        for (const auto &i : character.equipment) {
-            os << i << " ";
-        }
-        return os;
-    }
-
-    friend istream &operator>>(istream &input, Character &item) {
-        input >> item.name >> item.hp >> item.attack >> item.defense
-              >> item.gold >> item.x >> item.y;
-        int size;
-        input >> size;
-        for (int i = 0; i < size; ++i) {
-            string s;
-            input >> s;
-            item.bag.push_back(s);
-        }
-
-        input >> size;
-        for (int i = 0; i < size; ++i) {
-            string s;
-            input >> s;
-            item.equipment.push_back(s);
-        }
-
-        return input;
-    }
-
-
-};
-
-Character classes[] = {
-        // System default classes, e.g. Warrior, Knight, Ranger, Assassin, Archmage...
-};
-Character enemies[] = {
-        // System default Enemies, e.g. Slime, Goblin, Murloc, Undead...
-};
-Character player; // Player controlled character
-
-// define Items
-
-struct Item {
-    string name;
-    itemType type;
-    itemRarity rarity;
-    int value; //Amount of money gained from selling in the shop
-    int rounds; // Duration of effect, only for potion
-    /*
-    Effect; // Effect (buff or debuff) of the Item (to be defined)
-    */
-
-    // for write file, if you add field, and the field needed to save, add it
-    friend ostream &operator<<(ostream &os, const Item &item) {
-        os << item.name << " " << item.type << " " << item.rarity << " "
-           << item.value << " " << item.rounds;
-        return os;
-    }
-
-    friend istream &operator>>(istream &input, Item &item) {
-        input >> item.name >> item.type >> item.rarity >> item.value
-              >> item.rounds;
-        return input;
-    }
-
-};
-
-//define Map
-struct Map{
-    
-};
-
-// define random events
-
-class Event{
-public:
-    int eventCoder;
-    string name;
-    string desoription;
-    /*
-    void showEvent(){
-    };
-    ...
-    */
-};
-
-Event randomEvent[] ={
-    
-};
+    return 0;
+}
+*/
