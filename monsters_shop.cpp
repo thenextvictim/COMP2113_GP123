@@ -296,41 +296,41 @@ void ShowShop_and_BuyItems() {
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
+				if (shop_item_arr[choice-1].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
+				if (shop_item_arr[choice-1].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
+				if (shop_item_arr[choice-1].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
             else if (check1 && check2 && choice==2){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
+				if (shop_item_arr[choice-1].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
+				if (shop_item_arr[choice-1].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
+				if (shop_item_arr[choice-1].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
             else if (check1 && check2 && choice==3){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
+				if (shop_item_arr[choice-1].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
+				if (shop_item_arr[choice-1].name == Attack_potion.name) {
 					role1.attack += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
+				if (shop_item_arr[choice-1].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
