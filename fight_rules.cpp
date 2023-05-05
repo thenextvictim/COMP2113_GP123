@@ -37,8 +37,8 @@ role makerole(role &role1){
         role1.legend = "Human warrior";
         role1.damage = 20;
         role1.health = 100;
-        role1.defense = 10;
-        role1.gold_coin = 10;
+        role1.defense = 15;
+        role1.gold_coin = 50;
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
@@ -52,8 +52,8 @@ role makerole(role &role1){
         role1.legend = "Elf magician";
         role1.damage = 30;
         role1.health = 70;
-        role1.defense = 5;
-        role1.gold_coin = 2000;
+        role1.defense = 10;
+        role1.gold_coin = 70;
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
@@ -65,10 +65,10 @@ role makerole(role &role1){
     }
     else if (a == "3"){
         role1.legend = "Giant tank";
-        role1.damage = 10;
-        role1.health = 150;
+        role1.damage = 12;
+        role1.health = 140;
         role1.defense = 20;
-        role1.gold_coin = 5;
+        role1.gold_coin = 40;
         role1.weapon = "Nothing";
         role1.armor = "Nothing";
         role1.holly_relic = false;
@@ -123,7 +123,7 @@ string trophies(){
         return "Giant armor";
         break;
         case 8:
-        return "Holly_relic";
+        return "Holly relic";
         break;
         default:
         return "Error";
@@ -236,14 +236,11 @@ void change_proporties(string thing){
 }
 
 int fight(role role2){
-        int e; //exit game or not
+        int e = 0; //exit game or not
         int round=1;
         int fight_health1= role1.health;
         int fight_health2= role2.health;
-        if (role2.legend == "Black_Dragon"){
-                cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
-                e = 0;
-            }
+        // holly
         // legend attacks first
         int i, j;
         i= rand()% 3 ;
@@ -270,6 +267,7 @@ int fight(role role2){
         }
         if (fight_health2 == 0){
             cout << role2.legend << " dies." <<  " You win." << endl;
+            e = 0;
             break;
         }
         // monster attacks then
@@ -300,10 +298,13 @@ int fight(role role2){
         sleep(1);
     
         }
-        if (role2.legend == "Black_Dragon"){
+        if (role2.legend == "Black_Dragon" && e == 0){
                 cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
                 e = 0;
             }
+        else if(role2.legend == "Black_Dragon" && e == 1){
+            cout << "You defeat the final boss!" << endl;
+        }
         else{
             int get = rand()%((37)-(30)+1)+30;
             string thing = trophies();
