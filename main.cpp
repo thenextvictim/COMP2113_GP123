@@ -6,12 +6,14 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <time.h>
+#include <stdio.h>
 #include "header.h"
 using namespace std;
 
 
 
 int main(){
+    srand((unsigned int)time(NULL));
     cout << "###################################" << endl;
     cout << "#                                 #" << endl;
     cout << "#         Welcome to the          #" << endl;
