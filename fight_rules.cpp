@@ -5,7 +5,7 @@
 #include <math.h>
 #include <cstdlib>
 #include <unistd.h>
-#include "header.h"
+
 using namespace std;
 /*
 struct role{
@@ -86,13 +86,17 @@ role makerole(role &role1){
 }
 
 void display_bag(role role1){
+      cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl:
       cout << role1.legend << " " << role1.name << endl; 
       cout << "Damage: " << role1.damage << ", " << "Health: " << role1.health << ", " << "Defense: " << role1.defense << ", " << "Gold coin: " << role1.gold_coin << endl;
       cout << "Weapon: " << role1.weapon << ", " << "Armor: " << role1.armor << ", " << "Holly relic: " << role1.holly_relic << "." << endl; 
+      cout << "\033[31mDamagem: \033[0m" << role1.damage << ", " << "\033[32mHealth: \033[0m" << role1.health << ", " << "\033[34mDefense: \033[0m" << role1.defense << ", " << "\033[33mGold coin: \033[0m" << role1.gold_coin << endl;
+      cout << "\033[31mWeapon: \033[0m" << role1.weapon << ", " << "\033[34mArmor: \033[0m" << role1.armor << ", " << "\033[37mHolly relic: \033[0m" << role1.holly_relic << "." << endl; 
+      cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
 }
 
 string trophies(){
-    int k= rand()% 8 ;
+    int k= rand()% 9 ;
     switch(k){
         case 0:
         return "Long sword";
@@ -117,6 +121,9 @@ string trophies(){
         break  ; 
         case 7:
         return "Giant armor";
+        break;
+        case 8:
+        return "Holly_relic";
         break;
         default:
         return "Error";
@@ -226,7 +233,6 @@ void change_proporties(role role1, string thing){
         cout << "You can not use it. Maybe other legends can make use of it." << endl;
         cout << "You dropped it in case you load too much." << endl;
         }
-        cout << "You are going on your journey with a happy mood:)." << endl;
 }
 
 int fight(role role1, role role2){
@@ -234,6 +240,10 @@ int fight(role role1, role role2){
         int round=1;
         int fight_health1= role1.health;
         int fight_health2= role2.health;
+        if (role2.legend == "Black_Dragon"){
+                cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
+                e = 0;
+            }
         // legend attacks first
         int i, j;
         i= rand()% 3 ;
@@ -281,10 +291,20 @@ int fight(role role1, role role2){
         }
         //round is over
         round++;
+        if (round >= 50){
+            cout << "Because you fight for too long time, your body is too tired and out of control. You are defeated. You die.";
+            e = 1;
+            break;
+        }
         //Since our standard compile environment is in Linux, here we use the sleep function by adding <unistd.h> and sleep(1) states that the programme will stop for 1 seconds.
         sleep(1);
     
         }
+        if (role2.legend == "Black_Dragon"){
+                cout << "Though it is dead, Black_Dragon's eyes are still stareing at you, like saying something......" << endl;
+                e = 0;
+            }
+        else{
             int get = rand()%((7)-(3)+1)+3;
             string thing = trophies();
             cout << "You get " << get << " gold coins, and a " << thing << " ." << endl;
@@ -299,18 +319,19 @@ int fight(role role1, role role2){
             }
             if (a == 1){
             change_proporties(role1,thing);
+            cout << "You are going on your journey with a happy mood:)." << endl;
             }
             else{
-            cout << "You are going on your journey with a happy mood:)." << endl;    
+            cout << "You are going on your journey with a soso mood:|." << endl;     
             }
             e = 0;
-        
+        }
         // fight is all over, if exit = 0, game continue, else, game over
             return e;
     }
 
 /*
-
+Demo, not used in final version.
 int main(){
     role role1;
     role role2;
