@@ -196,7 +196,7 @@ int main(){
                 }
             }
             
-            sleep(3);
+            
             //cout << "Please choose a existing game (Input 1) or choose a new game (Input 2) or quit the whole game(Input 0)" << endl;
             cout << "###################################" << endl;
             cout << "#                                 #" << endl;
