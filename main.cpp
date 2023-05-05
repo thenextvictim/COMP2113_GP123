@@ -108,6 +108,12 @@ int main(){
                 if (command=="2"){
                     //showmap();
                     drawlRoad(status);
+                    sleep(1);
+                    cout<< "1. [Move forward]\n"
+                        << "2. [View the map]\n"
+                        << "3. [Check your inventory]\n"
+                        << "4. [Save and quit the game]\n"
+                        << "5. [Quit the game without saving]\n";
                 }
                 //savegame
                 else if (command=="4"){
@@ -122,10 +128,18 @@ int main(){
                 //display bag
                 else if (command=="3"){
                     display_bag(role1);
+                    sleep(1);
+                    cout<< "1. [Move forward]\n"
+                        << "2. [View the map]\n"
+                        << "3. [Check your inventory]\n"
+                        << "4. [Save and quit the game]\n"
+                        << "5. [Quit the game without saving]\n";
                 }
                 else if (command=="1"){
                     status++;
+                    cout<<"You go on for one step!"<<endl;
                     cout<<"     |     "<<endl; //
+                    cout<<"     |     "<<endl;
                     if (status%3==0 && status!=15){
                         //int nchoose;
                         //cout<<choose1[num]<<"     "<<choose2[num]<<endl;
@@ -168,6 +182,12 @@ int main(){
                             cout << "Error in map." << endl;
                             break;
                         }
+                        sleep(1);
+                        cout<< "1. [Move forward]\n"
+                        << "2. [View the map]\n"
+                        << "3. [Check your inventory]\n"
+                        << "4. [Save and quit the game]\n"
+                        << "5. [Quit the game without saving]\n";
                     }
                     //final boss
                     else if (status==15){
@@ -187,6 +207,7 @@ int main(){
                         }
                         
                     }
+                    
                     //cout<<"You can go upward(input 0) OR check map(input 1) OR savegame and quit game(input 2) OR quit game without savegame(input 3) OR check bag(input 4)" << endl;
                 }
                 else {
@@ -195,10 +216,12 @@ int main(){
                 }
             }
             if (end == 1){
+                sleep(1);
                 cout << "Unfortunately, your character was defeated.\n";
                 cout << "It's a tough loss, but don't give up!\n";
                 cout << "Keep trying and honing your skills, and success will come eventually.\n";
             }
+            sleep(1);
             
             //cout << "Please choose a existing game (Input 1) or choose a new game (Input 2) or quit the whole game(Input 0)" << endl;
             cout << "###################################" << endl;
