@@ -152,7 +152,7 @@ void ShowShop_and_BuyItems() {
 	potion = shop_item_potion_arr[index_potion];
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
-	cout << "Your gold: " << role1.gold_coin;
+	cout << "Your gold: " << role1.gold_coin<<"  "<<endl;
 	cout << potion.name << "  ";
 	cout << potion.description << "  ";
 	cout << "G" << potion.price << endl;
