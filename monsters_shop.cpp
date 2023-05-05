@@ -124,8 +124,7 @@ struct shop_item {
 shop_item Blood_potion = { "Blood potion","Raise your max HP by 20" ,40 };
 shop_item Attack_potion = { "Attack potion","Raise your strength by 5",30 };
 shop_item Earth_potion = { "Earth potion","Raise your defense value by 5",40 };
-shop_item Thorn_potion = { "Thorn potion","Obtain 10 blocks in your next battle",40 };
-shop_item shop_item_potion_arr[4] = { Blood_potion ,Blood_potion ,Earth_potion ,Thorn_potion };     // four potions
+shop_item shop_item_potion_arr[3] = { Blood_potion ,Blood_potion ,Earth_potion};     // four potions
 
 shop_item Long_sword = { "Long sword","Raise your strength by 5.",50 };
 shop_item Flintlock = { "Flintlock","Raise your strength by 8",70};
@@ -137,10 +136,10 @@ shop_item God_bless_armor = {"God-bless armor", "Raise your defense by 5",50};
 shop_item Standard_armor = {"Standard armor", "Raise your defense by 8",80};
 shop_item Magic_armor = {"Magic armor", "Raise your defense by 5", 50};
 shop_item Giant_armor = {"Giant armor", "Raise your defense by 10", 100};
-shop_item shop_item_armor[4] = {God_bless_armor, Standard_armor, Magic_armor, Giant_armor};
+shop_item shop_item_armor_arr[4] = {God_bless_armor, Standard_armor, Magic_armor, Giant_armor};
 
 
-void ShowShop_and_BuyItems(role role1) {
+void ShowShop_and_BuyItems() {
 	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. 'Give me the gold, and I'll give you the goods!', he says."<<endl;
 	shop_item potion, weapon, armor;
 	int choice, m = 0, n;
@@ -153,7 +152,7 @@ void ShowShop_and_BuyItems(role role1) {
 	potion = shop_item_potion_arr[index_potion];
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
-	cout << "Your gold: " << gold;
+	cout << "Your gold: " << role1.gold_coin;
 	cout << potion.name << "  ";
 	cout << potion.description << "  ";
 	cout << "G" << potion.price << endl;
@@ -183,8 +182,117 @@ void ShowShop_and_BuyItems(role role1) {
 					break;
 				}
 			}
-			if (role.gold_coin < shop_item_arr[choice].price) {                             // check whether the player has enough gold
+			if (role1.gold_coin < shop_item_arr[choice].price) {                             // check whether the player has enough gold
 				cout << "'Stop bothering me if don't have enough gold.',said the gremlin";
+				check2 = false;
+			}
+			if (check1 && check2 && choice==1){
+				if (shop_item_arr[choice].name == Blood_potion.name) {
+					role1.health += 20;
+					role1.gold_coin -= 40;
+				}
+				if (shop_item_arr[choice].name == Attack_potion.name) {
+					role1.damage += 5;
+					role1.gold_coin -= 30;
+				}
+				if (shop_item_arr[choice].name == Earth_potion.name) {
+					role1.defense += 5;
+					role1.gold_coin -= 40;
+				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+			}
+			if (check1 && check2 && choice == 2) {
+				if (shop_item_arr[choice].name == (Long_sword.name)) {
+					thing=="Long sword";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Flintlock.name)) {
+					thing=="Flintlock";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Magical_stick.name)) {
+					thing=="Magical stick";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Huge_axe.name)) {
+					thing=="Huge axe";
+					change_proporties(thing);
+				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+			}
+			if (check1 && check2 && choice == 3) {
+				if (shop_item_arr[choice].name == (God_bless_armor.name)) {
+					thing=="God-bless armor";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Standard_armor.name)) {
+					thing=="Standard armor";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Magic_armor.name)) {
+					thing=="Magic armor";
+					change_proporties(thing);
+				}
+				else if (shop_item_arr[choice].name == (Giant_armor.name)) {
+					thing=="Giant armor";
+					change_proporties(thing);
+				}
+				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<role1.gold_coin;
+			}
+		}
+		bought_items[m] = choice;
+		m++;
+	}
+}
+
+/*
+
+void ShowShop_and_BuyItems() {
+	//cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. \n\"Give me the gold, and I'll give you the goods!\", he says.\n"<<endl;
+	shop_item potion1, potion2, relic1, relic2;
+	int choice, m = 0, n;
+	bool buy_items = true;
+	srand(time(NULL));
+	int index_potion1 = rand() % 4;
+	int index_relic1 = rand() % 4;
+	int index_relic2 = rand() % 4;  
+	potion1 = shop_item_potion_arr[index_potion1];
+	relic1 = shop_item_weapon_arr[index_relic1];
+	relic2 = shop_item_armor_arr[index_relic2];
+
+    shop_item shop_item_arr[3] = {potion1,relic1,relic2};   // items in shop
+
+    cout << Dividing_line;
+    for (int i = 0; i < 4; i++) {
+    cout << setw(16) << left << shop_item_arr[i].name << "  ";
+    cout << "$" << setw(4) << left << shop_item_arr[i].price << endl;
+    cout << shop_item_arr[i].description << endl << Dividing_line;
+    }                      // show four items, two potions and two relics in each shop.
+
+	int bought_items[4] = {};
+	cout << "Choose your preferred items! Enter number 1-4 for the products, -1 for refresh shop, -2 for check player status and 0 for exiting.\n";
+	while (buy_items) {
+        cout << setw(30) << right << "Your gold : " << gold << endl;
+		bool check1 = true, check2 = true;
+		cin >> choice;
+		if (choice == 0) {
+			cout << "\"Good luck.\",said the gremlin and fades away in the cave.\n";
+			buy_items = false;
+		}
+        else if (choice < 1 || choice > 4){
+            cout << "Invalid Input" << endl;
+            // Invalid Input
+        }
+		else {
+			for (int bought_item : bought_items) { //
+				if (bought_item == choice) {                                  // check whether the item is bought
+					cout << "The item is sold out! Choose another one !\n";
+					check1= false;
+					break;
+				}
+			}
+			if (role1.gold_coin < shop_item_arr[choice-1].price) {                             // check whether the player has enough gold
+				cout << "'stop bothering me if don't have enough gold',said the gremlin\n";
 				check2 = false;
 			}
 			if (check1 && check2 && choice==1){
@@ -200,54 +308,47 @@ void ShowShop_and_BuyItems(role role1) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
-			}
-			if (check1 && check2 && choice == 2) {
-				if (shop_item_arr[choice].name == (Long_sword.name)) {
-					thing=="Long sword";
-					change_proporties(role1, thing);
+            else if (check1 && check2 && choice==2){
+				if (shop_item_arr[choice].name == Blood_potion.name) {
+					role1.health += 20;
+					role1.gold_coin -= 40;
 				}
-				else if (shop_item_arr[choice].name == (Flintlock.name)) {
-					thing=="Flintlock";
-					change_proporties(role1, thing);
+				if (shop_item_arr[choice].name == Attack_potion.name) {
+					role1.attack += 5;
+					role1.gold_coin -= 30;
 				}
-				else if (shop_item_arr[choice].name == (Magic_stick.name)) {
-					thing=="Magical stick";
-					change_proporties(role1, thing);
+				if (shop_item_arr[choice].name == Earth_potion.name) {
+					role1.defense += 5;
+					role1.gold_coin -= 40;
 				}
-				else if (shop_item_arr[choice].name == (Huge_axe.name)) {
-					thing=="Huge axe";
-					change_proporties(role1, thing);
+            else if (check1 && check2 && choice==3){
+				if (shop_item_arr[choice].name == Blood_potion.name) {
+					role1.health += 20;
+					role1.gold_coin -= 40;
 				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
-			}
-			if (check1 && check2 && choice == 3) {
-				if (shop_item_arr[choice].name == (God_bless_armor.name)) {
-					thing=="God-bless armor";
-					change_proporties(role1, thing);
+				if (shop_item_arr[choice].name == Attack_potion.name) {
+					role1.attack += 5;
+					role1.gold_coin -= 30;
 				}
-				else if (shop_item_arr[choice].name == (Standard_armor.name)) {
-					thing=="Standard armor";
-					change_proporties(role1, thing);
+				if (shop_item_arr[choice].name == Earth_potion.name) {
+					role1.defense += 5;
+					role1.gold_coin -= 40;
 				}
-				else if (shop_item_arr[choice].name == (Magic_armor.name)) {
-					thing=="Magic armor";
-					change_proporties(role1, thing);
-				}
-				else if (shop_item_arr[choice].name == (Giant_armor.name)) {
-					thing=="Giant armor";
-					change_proporties(role1, thing);
-				}
-				cout<<"Thank you!, said the gremlin."<<" Your gold: " <<gold;
-			}
+            role1.gold_coin -= shop_item_arr[choice-1].price;
+            cout << "You bought the " << shop_item_arr[choice-1].name << endl;
+            bought_items[m] = choice;
+            m++;
+            // Mark
+            }
+            }
 		}
-		bought_items[m] = choice;
-		m++;
 	}
 }
+}
 
+*/
 
-
+const string Dividing_line = "-------------------------------------------------------------------\n";
 
 string invalid_input_1[8]= {
     "You try to do that, but it seems impossible. Perhaps there's another way?",
@@ -333,7 +434,7 @@ void Portal(int& num, int&status){
     getline(cin,command);
 }
 
-void Golden_Shrine(role& player){
+void Golden_Shrine(){
     string command;
     cout << Dividing_line << "Before you lies an elaborate shrine to an ancient spirit.\n";
     cout << Dividing_line
@@ -347,12 +448,12 @@ void Golden_Shrine(role& player){
     }
     cout << Dividing_line;
     if (command == "1"){
-        player.gold_coin += 100;
+        role1.gold_coin += 100;
         cout << "As your hand touches the shrine, gold rains from the ceiling showering you in riches.\n";
     }
     else if (command == "2"){
-        player.gold_coin += 275;
-        player.damage -= 3;
+        role1.gold_coin += 275;
+        role1.damage -= 3;
         cout << "Each time you strike the shrine, gold pours forth again and again!\n"
              << "As you pocket the riches, something " << "\033[1;31mweighs heavily on you.\033[0m\n";
     }
@@ -364,7 +465,7 @@ void Golden_Shrine(role& player){
     getline(cin,command);
 }
 
-void Treasure_chest(role& player){
+void Treasure_chest(){
     string command;
     bool mimic = (rand() % 2 == 1);
     if (mimic){
@@ -396,7 +497,7 @@ void Treasure_chest(role& player){
                 // if Win:
                     cout << "With a final blow, you vanquish the gruesome mimic.\n"
                         << "You discover a hoard of treasure within the remains, including a rare piece of equipment.\n";
-                    player.gold_coin += 200 + rand()%50;
+                    role1.gold_coin += 200 + rand()%50;
                     // Get Equitment
                 // if Lose
                     // endGame();
@@ -427,7 +528,7 @@ void Treasure_chest(role& player){
         cout << Dividing_line;
         if (command == "1"){
             cout << "You successfully pry open the chest, revealing a trove of treasure within: gold coins, gems, and a valuable piece of equipment.\n";
-            player.gold_coin += 90 + rand()%20;
+            role1.gold_coin += 90 + rand()%20;
             // Get an equipment;
         }
         else if (command == "2"){
@@ -439,7 +540,7 @@ void Treasure_chest(role& player){
     }
 }
 
-void Lab(role& player){
+void Lab(){
     string command;
     int index[3]={0,0,0};
     index[0] = rand()%3;
@@ -461,24 +562,18 @@ void Lab(role& player){
     cout << Dividing_line;
     if (command == "1"){
         cout << "You find a " << shop_item_potion_arr[index[i]].name << endl;
-                switch (shop_item_potion_arr[index[i]].effect_type) {
-                case MaxHP:
-                    player.health += shop_item_potion_arr[index[i]].effect_amount;
-                    cout << "As you drink the potion, your wounds heal and your body becomes more resilient. You feel your maximum health increase." << endl;
-                    break;
-                case ATTACK:
-                    player.damage += shop_item_potion_arr[index[i]].effect_amount;
-                    cout << "The elixir surges through your veins, sharpening your senses and increasing your attack power!" << endl;
-                    break;
-                case DEFENSE:
-                    player.defense += shop_item_potion_arr[index[i]].effect_amount;
-                    cout << "You feel the potion's power moving through you, as if it were part of your very being. your defense is now even stronger than before." << endl;
-                    break;
-                case BLOCKS:
-                    // Add code to apply block effect
-                    cout << "The potion fortifies your shield arm, allowing you to block and deflect attacks with greater ease and effectiveness." << endl;
-                    break;
-                }
+            if (shop_item_potion_arr[index[i]].name == Blood_potion.name) {
+                role1.health += 20;
+                cout << "As you drink the potion, your wounds heal and your body becomes more resilient. You feel your maximum health increase." << endl;
+            }
+            if (shop_item_potion_arr[index[i]].name == Attack_potion.name) {
+                role1.damage += 5;
+                cout << "The elixir surges through your veins, sharpening your senses and increasing your attack power!" << endl;
+            }
+            if (shop_item_potion_arr[index[i]].name == Earth_potion.name) {
+                role1.defense += 5;
+                cout << "You feel the potion's power moving through you, as if it were part of your very being. your defense is now even stronger than before." << endl;
+            }
         }
     }
     cout << Dividing_line
@@ -492,17 +587,17 @@ void Lab(role& player){
     getline(cin,command);
 }
 
-void randomEvent(role& player){
+void randomEvent(){
     switch (rand()%3)
     {
     case 0:
-        Golden_Shrine(player);
+        Golden_Shrine();
         break;
     case 1:
-        Treasure_chest(player);
+        Treasure_chest();
         break;
     case 2:
-        Lab(player);
+        Lab();
         break;
     }
 }
