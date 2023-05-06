@@ -23,6 +23,8 @@ int main(){
     
     //cout << "Please choose a existing game (Input 1) or choose a new game (Input 2) or quit the whole game(Input 0)" << endl;
     cout << "   - 1. [Continue]\n   - 2. [New Game]\n   - 3. [Quit]\n";
+    
+    // bool g is used to check if the adventure should start
     bool g;
     int end, place;
     string savename, command, Places[4]={};
@@ -159,7 +161,6 @@ int main(){
                             place = choose2[num];
                         }
                         num++;
-                        //map(place);
                         //to call corresponding function for different events
                         switch (place){
                         case 0:
@@ -201,7 +202,6 @@ int main(){
                         //TE
                             cout << "You defeat the boss, but youself become the new Dragon, with craws and wings suddenly born from your body, you finally know everything but too late......" << endl;
                             cout << "You get to end of the maze and your soul is pulled to a unknown place again......" << endl;
-                            //制作名单
                             cout << "Thanks for playing!" << endl;
                             cout << "Press any key to return to the main menu" << endl;
                             cin >> command;
