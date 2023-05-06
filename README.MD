@@ -11,7 +11,7 @@ Elf magician -- very high initial DA, low HP, low DE, and many initial G --i.e. 
 
 Giant tank --  low initial DA, high HP, high DE, and low initial G --i.e. initial DA(12), HP(140), DE(20), G(40).
 
-After selected a role to play, a fully random maze will be automatically created with several branches, players will encounter a fork every three steps. After choosing the direction at the fork，players would like to trigger some random events like facing monsters/ enconter a portal/ find shops etc. Then after several steps of adventure, the legend will finally reach the exit of maze with a boss in the end. If boss is defeated, then player will pass the maze and min. Otherwise, legends will lose if HP <= 0 in any of the fights, which also means the current game lose and player need to load a existing game or create another new game.
+After selected a role to play, a fully random maze will be automatically created with several branches, players will encounter a fork every three steps. After choosing the direction at the fork，players would like to trigger some random events like facing monsters/ enconter a portal/ find shops/ experience magical incidents, etc. Then after several steps of adventure, the legend will finally reach the exit of maze with a boss in the end. If boss is defeated, then player will pass the maze and min. Otherwise, legends will lose if HP <= 0 in any of the fights, which also means the current game lose and player need to load a existing game or create another new game.
 
 ## Nouns and rules explanation
 
@@ -20,7 +20,7 @@ legend will get some spoil include: weapoms, armors, gold coins.
 
 Portal: if a legend find this, he/she can teleport to a deeper place in the maze(i.e. omit some random branches and get closer to the end).
 
-Shops: crafty goblin merchant will show the legend 3 types of goods include weapons, armors, magic potions or holly relic. The goods are expensive and cost gold coins.
+Shops: crafty goblin merchant will show the legend 3 types of goods include weapons, armors, or magic potions. The goods are expensive and cost gold coins.
 
 Weapons:
     Long sword: +5 damage, every legend can use.
