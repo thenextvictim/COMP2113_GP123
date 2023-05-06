@@ -88,7 +88,7 @@ Fight example (for demo, not identical to real situation):
 - Game save system: Players can save their current game progress and continue the game the next time they play.
 
 ## Five coding requirements
-1. Generation of random game sets or events
+1. Generation of random game sets or events  
 Players will encounter different random events as they advance.    
 The types of monsters met are random, and the number of gold coins and game equipment will be randomly dropped after successfully defeating the monster.  
 Different types of goods will be randomly shown in the shop. 
