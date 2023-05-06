@@ -98,8 +98,8 @@ Saved data includes the role and the map i.e. monsters, shops and portals.
 About the role: Legend, name, weapon, armor and trash talk, these are in form of string. Damage, health, defense, gold coin as saved as integers. Holly relic is saved as bool.  
 About the map: Generated paths and player selections are saved as arrays.
 
-3. Dynamic memory management
-In the gamesave.cpp file, vertor that stores strings is used to add the savenames of a game when players want to save games.
+3. Dynamic memory management  
+In the gamesave.cpp file, vertor that stores strings is used to add the savenames of a game when players want to save games.  
 Players can save games without the limit on numbers of saved games.
 
 4. File input/output (e.g., for loading/saving game status)  
