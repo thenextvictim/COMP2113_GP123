@@ -153,7 +153,7 @@ shop_item shop_item_armor_arr[4] = {God_bless_armor, Standard_armor, Magic_armor
 
 
 void ShowShop_and_BuyItems() {
-	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. 'Give me the gold, and I'll give you the goods!', he says."<<endl;
+	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. \"Give me the gold, and I'll give you the goods!\", he says."<<endl;
 	shop_item potion, weapon, armor;
 	int choice, m = 0, n;
 	bool buy_items = true;
@@ -212,7 +212,7 @@ void ShowShop_and_BuyItems() {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
-				cout<<"Thank you!, said the gremlin." << endl <<" Your gold: " << "\033[33mG\033[0m" << role1.gold_coin << endl;
+				cout<<"\"Thank you!\", said the gremlin." << endl;
                 bought_items[m] = choice;
 		        m++;
 			}
@@ -234,7 +234,7 @@ void ShowShop_and_BuyItems() {
 					change_proporties(thing);
 				}
 				role1.gold_coin -= shop_item_arr[choice-1].price;
-                cout<< "Thank you!, said the gremlin." << endl;
+                cout<<"\"Thank you!\", said the gremlin." << endl;
                 bought_items[m] = choice;
 		        m++;
 			}
@@ -256,7 +256,7 @@ void ShowShop_and_BuyItems() {
 					change_proporties(thing);
 				}
 				role1.gold_coin -= shop_item_arr[choice-1].price;
-                cout<<"\"Thank you!\", said the gremlin.\n"<<" Your gold: \033[33mG\033[0m" <<role1.gold_coin << endl;
+                cout<<"\"Thank you!\", said the gremlin." << endl;
                 bought_items[m] = choice;
 		        m++;
 			}
