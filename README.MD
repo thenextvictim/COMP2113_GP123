@@ -22,6 +22,8 @@ Portal: if a legend find this, he/she can teleport to a deeper place in the maze
 
 Shops: crafty goblin merchant will show the legend 3 types of goods include weapons, armors, or magic potions. The goods are expensive and cost gold coins.
 
+Random events: random events will be meeted at every crossing and unknown things will happen, role can get weanpons, aarmors, magic options and holly relic and sometimes debuffs.
+
 Weapons:
     Long sword: +5 damage, every legend can use.
     Flintlock: +8 damage, only can be used by human warrior.
@@ -49,9 +51,9 @@ Bag: You can cheak your properties here along with your number of gold coins and
  Every round， legends will attack once and monsters will attend once, and HP will be deducted if being attacked. The loss of HP: Attacker's DA - Defenser's DE
  When one of the fighters'HP <= 0, then fight is over. After a fight, since legends are blessed by the gods, they can recover from all hurts before and HP will resetted to 100%.  
  
- Fight example:  
+ Fight example (for demo, not identical to real situation):  
  
-          (your_name): In the name of justice, your guilty will be judged!  
+          (your_name): Infor  the name of justice, your guilty will be judged!  
           Forest wolf: Bow-bow~  
           1st round:   
           Human warrior (your_name) attacks Forest wolf and make a hurt of -12 (48/60)  
