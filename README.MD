@@ -87,6 +87,8 @@ Fight example (for demo, not identical to real situation):
 
 - Game save system: Players can save their current game progress and continue the game the next time they play.
 
+- Interesting elements: We highlighted some keywords and use text-image to make fun. We also give random statements for monsters and role to say. What's more, a player will see many different sentences when doing wrong command. So just do everything you can image to this game!
+
 ## Five coding requirements
 1. Generation of random game sets or events  
 Players will encounter different random events as they advance.    
