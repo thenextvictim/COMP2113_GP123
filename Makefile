@@ -1,11 +1,19 @@
 FLAGS = -pedantic-errors -std=c++11
 
-d2boh.o: d2boh.cpp d2boh.h
-	g++ $(FLAGS) -c $<
-main3.o: main3.cpp d2boh.h 
-	g++ $(FLAGS) -c $<
-main3: d2boh.o main3.o
-	g++ $(FLAGS) $^ -o $@
+fight_rules.o: fight_rules.cpp header.h
+        g++ $(FLAGS) -c $<
+map.o: map.cpp header.h
+        g++ $(FLAGS) -c $<
+events.o: events.cpp fight_rules.cpp header.h
+        g++ $(FLAGS) -c $<
+gamesave.o: gamesave.cpp header.h
+        g++ $(FLAGS) -c $<
+main.o: main.cpp header.h
+        g++ $(FLAGS) -c $<
+game: main.o gamesave.o events.o map.o fight_rules.o
+        g++ $(FLAGS) $^ -o $@
 clean:
-	rm -f main3 main3.o d2boh.o
-.PHONY: clean
+        rm -f game main.o gamesave.o events.o map.o fight_rules.o game.tgz
+tar:
+        tar -czvf game.tgz *.cpp *.h
+.PHONY: clean ta
