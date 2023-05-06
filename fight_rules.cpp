@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include "header.h"
 using namespace std;
-/*
+/* had been put into header.h
 struct role{
     string legend;
     string name;
@@ -21,6 +21,7 @@ struct role{
     string trash_talk[3];
 };
 */
+// function to initialize a role(legend) for player
 role makerole(role &role1){
     //cout << "Please choose your legend. Input 1 if you can to be a Human Warrior, 2 if Elf Magician, 3 if Giant Tank." << endl;
     cout << "+-----------------------------+" << endl;
@@ -84,7 +85,7 @@ role makerole(role &role1){
     //role1.name = name;
     return role1;
 }
-
+// function to display bag(inventory)
 void display_bag(role role1){
       cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
       cout << role1.legend << " " << role1.name << endl; 
@@ -94,7 +95,7 @@ void display_bag(role role1){
       cout << "\033[31mWeapon: \033[0m" << role1.weapon << ", " << "\033[34mArmor: \033[0m" << role1.armor << ", " << "\033[37mHolly relic: \033[0m" << role1.holly_relic << "." << endl; 
       cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
 }
-
+// function to get trophies after a common fight with monsters or some events
 string trophies(){
     int k= rand()% 9 ;
     switch(k){
@@ -130,6 +131,7 @@ string trophies(){
     }
 
 }
+// function to drop a weapon and deduct concerned properties
 void drop_weapon(){
     if (role1.weapon == "Long sword"){
         role1.damage = role1.damage-5;
@@ -144,7 +146,7 @@ void drop_weapon(){
         role1.damage = role1.damage-5;
     }
 }
-
+// function to drop a armor and deduct concerned properties
 void drop_armor(){
     if (role1.armor == "God-bless armor"){
         role1.defense = role1.defense-5;
@@ -159,7 +161,7 @@ void drop_armor(){
         role1.defense = role1.defense-10;
     }
 }
-
+//function to equip things or drink potions and change role's proporties concerned
 void change_proporties(string thing){
     if (thing=="Long sword"){
         if (role1.weapon != "Nothing"){
@@ -272,6 +274,7 @@ void change_proporties(string thing){
         }
 }
 
+//function of fight rules, for all situations when meet a fight
 int fight(role role2){
         int e = 0; //exit game or not
         int round=1;
