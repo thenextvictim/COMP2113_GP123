@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+// Defination of struct role is include in "header.h"
 /*
 struct role{
     string legend;
@@ -22,9 +22,10 @@ struct role{
 };
 */
 
+// Definition of player controlled by user
 role role1;
 
-//Function gamesave, enter the game name and open the file
+//Function gamesave, enter the file name and save game data (map, player position, legend, name, and other informations) in that file.
 void gamesave(){
     ofstream fout;
     string savename,data;
@@ -33,11 +34,13 @@ void gamesave(){
     cin >> savename;
     fout.open(savename.c_str());
 
-    //If successful, load the map and role information
+    // If open file fail, print error information on the screen
     if(fout.fail()){
         cout << "Error in opening the file." << endl;
         fout.close();
     }
+    
+    //If successful, load the map and role information
     else{
         // map information
         for (int i=0; i<5;i++){
@@ -72,7 +75,8 @@ void gamesave(){
         cout << "This game is saved." << endl;
         fout.close();
         ifstream fin;
-        // save the game name to the game menu
+        // game_menu.txt is used to store the list of file names of save files.
+        // Check if this save file exists
         fin.open("game_menu.txt");
         while (fin >> data){
             if (data == savename){
@@ -80,15 +84,17 @@ void gamesave(){
             }
         }
         fin.close();
+        // If the save file does not exist in game_menu.txt, append the file name to game_menu.txt
         if (if_exist == false){
             fout.open("game_menu.txt", ios::app);
             fout << savename << endl;
             fout.close();
         }
+        // If the save file name exists in game_menu.txt, do nothing
     }
 }
 
-//show the game saved in the game menu 
+//show the game saved in the game menu and let user choose one save file, then return the chosen file name.
 string choosegame(){
     ifstream fin;
     vector<string> savenames;
@@ -116,18 +122,23 @@ string choosegame(){
     return savenames[index-1];
 }
 
-// load the game if everything is ok, otherwise not
+// load the game in file "savename". If file open fail, print error information and return false. If file load successfully, return true.
 bool loadgame(string savename){
     ifstream fin;
+    // data is used to read int information in save file.
     int data;
+    // data_str is used to read string information in save file
     string data_str;
+    
     fin.open(savename.c_str());
+    // print error information on screen if file open fail
     if (fin.fail()){
         fin.close();
         cout << "Error in opening the file." << endl;
         return false;
     }
     else {
+        // read data about map
         for (int i=0; i<5; i++){
             fin >> data;
             
@@ -148,6 +159,7 @@ bool loadgame(string savename){
         status = data;
         fin >> data;
         num = data;
+        // read data about player
         getline(fin,data_str);
         getline(fin,data_str);
         role1.legend = data_str;
@@ -179,62 +191,3 @@ bool loadgame(string savename){
     fin.close();
     return false;    
 }
-
-
-/*
-int main(){
-        role1.legend = "Human warrior";
-        role1.damage = 20;
-        role1.health = 100;
-        role1.defense = 10;
-        role1.gold_coin = 10;
-        role1.weapon = "Nothing";
-        role1.armor = "Nothing";
-        role1.holly_relic = false;
-        role1.trash_talk[0] = "In the name of justice, your guilty will be judged!";
-        //“星星之火，可以燎原。”
-        role1.trash_talk[1] = "A single spark can start a prairie fire";
-        //"失去人性，失去很多。失去兽性，失去一切。"
-        role1.trash_talk[2] = "Lose humanity, lose much. Lose animalistic nature, lose all.";
-    string savename;   
-    gamesave();
-    savename = choosegame();
-    loadgame(savename);
-    cout << "choose1:" << endl;
-    for (int i=0; i<5;i++){
-            cout << choose1[i] << " ";
-        }
-        cout << endl;
-
-        cout << "choose2:" << " ";
-        for (int i=0; i<5;i++){
-            cout << choose2[i] << " ";
-        }
-        cout << endl;
-
-        cout << "choice" << " ";
-        for (int i=0; i<5;i++){
-            cout << choice[i] << " ";
-        }
-        cout << endl;
-
-        // role
-        cout << "status:" << " ";
-        cout << status << endl;
-        cout << "role1" << " ";
-        cout << role1.legend << " " ;
-        cout << role1.name << " " ;
-        cout << role1.damage << " " ;
-        cout << role1.health << " " ;
-        cout << role1.defense << " " ;
-        cout << role1.gold_coin << " " ;
-        cout << role1.weapon << " " ;
-        cout << role1.armor << " " ;
-        cout << role1.holly_relic << " " << endl;
-        for (int i=0; i<3; i++){
-            cout << role1.trash_talk[i] << " " << endl;
-        }
-
-    return 0;
-}
-*/
