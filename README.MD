@@ -103,10 +103,6 @@ If the player chooses to save, all the required data will be stored in a text fi
 5. Program codes in multiple files  
 The main.cpp file contains the driver program and basic inputs for this game. Game map, fight rule, random events and game save are declared and stored in separate files.
 
-## Compilation and execution instructions
-Run ```make game``` to compile the game.
-Do ```./game``` to start the game.
-
 
 
 //A list of features that you have implemented and explain how each coding 
@@ -120,3 +116,8 @@ are supported by these libraries.
 // Compilation and execution instructions. This serves like a "Quick start" of your 
 game. The teaching team will follow your instructions to compile and run your 
 game.
+
+## Compilation and execution instructions
+Use```make clean``` to clean all old *.o and game files
+Run ```make game``` to compile the game.
+Do ```./game``` to start the game.
