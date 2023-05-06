@@ -1,5 +1,5 @@
-## Identification of the team members.
-Our group include 5 members:
+## Identification of the team members
+Our group include 5 members:  
 Deng Menghao, Huang Shiqi, Song Bingyan, Wu Qiong, Zhang Kaiqi (ordered alphabetically).
 
 ## Game description
@@ -13,7 +13,7 @@ Giant tank --  low initial DA, high HP, high DE, and low initial G --i.e. initia
 
 After selected a role to play, a fully random maze will be automatically created with several branches, players will encounter a fork every three steps. After choosing the direction at the fork，players would like to trigger some random events like facing monsters/ enconter a portal/ find shops etc. Then after several steps of adventure, the legend will finally reach the exit of maze with a boss in the end. If boss is defeated, then player will pass the maze and min. Otherwise, legends will lose if HP <= 0 in any of the fights, which also means the current game lose and player need to load a existing game or create another new game.
 
-## Nouns and rules explanation:
+## Nouns and rules explanation
 
 Monsters: will attack legends at once and have different types. 3 legends are good at fighting with some of them, but not able to handle the others. Once defeated, the
 legend will get some spoil include: weapoms, armors, gold coins.
@@ -72,6 +72,42 @@ Bag: You can cheak your properties here along with your number of gold coins and
           Human warrior（your_name） attacks Forest wolf and make a hurt of -12 (0/60)  
           Forest wolf dies, you win.  
           You gets 5 gold coins, a Magic armor.  
+          
+## List of Features have implemented
+- Randomized maps: A new map is generated every time the game is loaded. There are many forks in the map, and players will face different challenges in choosing different directions，i.e. monsters, shops and portals.
+
+- Personalized role attributes: There are roles with different characteristics to choose from. Game equipments are randomly dropped after the battle is won, different weapons and armors can only be equipped by specific occupations. Gold coins can be used to buy required potions and game equipments in the store.
+
+- Viewable role status: Players can view current location, role attributes and armored game equipments.
+
+- Automated combat system: When encountering a monster, the battle will be automatically triggered and settled through the turn system. If the battle is won, gold coins and game equipments will be randomly dropped.
+
+- Game save system: Players can save their current game progress and continue the game the next time they play.
+
+## Five coding requirements
+1. Generation of random game sets or events
+Players will encounter different random events as they advance.  
+The types of monsters you meet are random, and gold coins and game equipment will be randomly dropped after the battle is won.  
+Different items will randomly appear in the store.  
+
+2. Data structures for storing game status  
+Saved data includes the role and the map i.e. monsters, shops and portals.
+About the role: Legend, name, weapon, armor and trash talk, these are in form of string. Damage, health, defense, gold coin as saved as integers. Holly relic is saved as bool.  
+About the map: Generated paths and player selections are saved as arrays.
+
+3. Dynamic memory management
+
+4. File input/output (e.g., for loading/saving game status)  
+If the player chooses to save, all the required data will be stored in a text file, and the data in the file can be read in the next game.
+
+5. Program codes in multiple files  
+The main.cpp file contains the driver program and basic inputs for this game. Game map, fight rule, random events and game save are declared and stored in separate files.
+
+## Compilation and execution instructions
+Run ```make game``` to compile the game.
+Do ```./game``` to start the game.
+
+
 
 //A list of features that you have implemented and explain how each coding 
 element 1 to 5 listed under the coding requirements aforementioned support 
