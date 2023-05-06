@@ -151,13 +151,31 @@ shop_item Magic_armor = {"Magic armor", "Raise your defense by 5", 50};
 shop_item Giant_armor = {"Giant armor", "Raise your defense by 10", 100};
 shop_item shop_item_armor_arr[4] = {God_bless_armor, Standard_armor, Magic_armor, Giant_armor};
 
+string buy_item_shop[] = {
+    "\"May the blessings of the ancients guide you on your journey, adventurer. Thank you for your patronage!\"",
+    "\"The winds of fortune favor thee, warrior.\"",
+    "\"May the virtues of our shop stay with you as you journey on.\"",
+    "\"The embrace of magic will surround those who purchase from us.\""
+};
+
+string sold_out_shop[] = {
+    "The gremlin raises an eyebrow at you. \"Sorry, we don't have that item in stock. Can I help you find something else?\"",
+    "The gremlin glances at the empty space on the shelf where that item used to be. \"Sorry, we're sold out right now. Can i interest you in something else?\"",
+    "\"I'm sorry adventurer. It seems this item is no longer available for purchase.\", said the germlin."
+};
+string invalid_input_shop[] = {
+    "The magic of the shop seems to be refusing that input. Perhaps there's another way you can achieve your goal?",
+    "That choice does not resonate with the magical energies of this shop. Can you ask again in a different way?",
+    "The arcane secrets of this shop hum with power, but that input is not unlocking them. Can you try again?",
+    "The shadows within this store twist and turn, refusing to heed that request. Perhaps there's another path you can take?"
+};
 
 void ShowShop_and_BuyItems() {
 	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. \"Give me the gold, and I'll give you the goods!\", he says."<<endl;
 	shop_item potion, weapon, armor;
-	int choice, m = 0, n;
+	int choice_int, m = 0, n;
 	bool buy_items = true;
-    string thing;
+    string choice, thing;
 	srand(time(NULL));
 	int index_potion = rand() % 3;
 	int index_weapon = rand() % 4;
@@ -183,84 +201,88 @@ void ShowShop_and_BuyItems() {
         cout << setw(30) << right << "Your gold : " << "\033[33mG" << role1.gold_coin << "\033[0m" << endl;
 		bool check1 = true, check2 = true;
 		cin >> choice;
-		if (choice == 0) {
-			cout << "\"Good luck.\",said the gremlin and fades away in the cave." << endl;
+		if (choice == "0") {
+			cout << "\"Good luck.\"" << ",said the gremlin and fades away in the cave." << endl;
 			buy_items = false;
 		}
-		else {
+		else if (choice == "1" || choice == "2" || choice == "3"){
+            choice_int = stoi(choice);
 			for (n = 0; n < m; n++) {
-				if (bought_items[n] == choice) {                                  // check whether the item is bought
-					cout << "The item is sold out! Choose another one !" << endl;
+				if (bought_items[n] == choice_int) {                                  // check whether the item is bought
+					cout << sold_out_shop[rand()%(sizeof(sold_out_shop)/sizeof(sold_out_shop[0]))] << endl;
 					check1= false;
 					break;
 				}
 			}
-			if (role1.gold_coin < shop_item_arr[choice-1].price) {                             // check whether the player has enough gold
+			if ((role1.gold_coin < shop_item_arr[choice_int-1].price) && (check1 == true)) {                             // check whether the player has enough gold
 				cout << "\"Stop bothering me if don't have enough gold.\",said the gremlin" << endl;
 				check2 = false;
 			}
-			if (check1 && check2 && choice==1){
-				if (shop_item_arr[choice-1].name == Blood_potion.name) {
+			if (check1 && check2 && choice_int==1){
+				if (shop_item_arr[choice_int-1].name == Blood_potion.name) {
 					role1.health += 20;
 					role1.gold_coin -= 40;
 				}
-				if (shop_item_arr[choice-1].name == Attack_potion.name) {
+				if (shop_item_arr[choice_int-1].name == Attack_potion.name) {
 					role1.damage += 5;
 					role1.gold_coin -= 30;
 				}
-				if (shop_item_arr[choice-1].name == Earth_potion.name) {
+				if (shop_item_arr[choice_int-1].name == Earth_potion.name) {
 					role1.defense += 5;
 					role1.gold_coin -= 40;
 				}
-				cout<<"\"Thank you!\", said the gremlin." << endl;
-                bought_items[m] = choice;
+				cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
+                bought_items[m] = choice_int;
 		        m++;
 			}
-			if (check1 && check2 && choice == 2) {
-				if (shop_item_arr[choice-1].name == (Long_sword.name)) {
+			else if (check1 && check2 && choice_int == 2) {
+				if (shop_item_arr[choice_int-1].name == (Long_sword.name)) {
 					thing="Long sword";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Flintlock.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Flintlock.name)) {
 					thing="Flintlock";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Magical_stick.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Magical_stick.name)) {
 					thing="Magical stick";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Huge_axe.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Huge_axe.name)) {
 					thing="Huge axe";
 					change_proporties(thing);
 				}
-				role1.gold_coin -= shop_item_arr[choice-1].price;
-                cout<<"\"Thank you!\", said the gremlin." << endl;
-                bought_items[m] = choice;
+				role1.gold_coin -= shop_item_arr[choice_int-1].price;
+                cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
+                bought_items[m] = choice_int;
 		        m++;
 			}
-			if (check1 && check2 && choice == 3) {
-				if (shop_item_arr[choice-1].name == (God_bless_armor.name)) {
+			else if (check1 && check2 && choice_int == 3) {
+				if (shop_item_arr[choice_int-1].name == (God_bless_armor.name)) {
 					thing="God-bless armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Standard_armor.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Standard_armor.name)) {
 					thing="Standard armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Magic_armor.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Magic_armor.name)) {
 					thing="Magic armor";
 					change_proporties(thing);
 				}
-				else if (shop_item_arr[choice-1].name == (Giant_armor.name)) {
+				else if (shop_item_arr[choice_int-1].name == (Giant_armor.name)) {
 					thing="Giant armor";
 					change_proporties(thing);
 				}
-				role1.gold_coin -= shop_item_arr[choice-1].price;
-                cout<<"\"Thank you!\", said the gremlin." << endl;
-                bought_items[m] = choice;
+				role1.gold_coin -= shop_item_arr[choice_int-1].price;
+                cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
+                bought_items[m] = choice_int;
 		        m++;
 			}
 		}
+        else {
+            cout << invalid_input_shop[rand()%(sizeof(invalid_input_shop)/sizeof(invalid_input_shop[0]))] << endl;
+        }
 	}
 }
 
@@ -307,10 +329,7 @@ string continue_input_2[6]= {
     "Every challenge you overcome makes you stronger. Eeady yourself for what lies ahead. \nHit \033[1;34m[Enter]\033[0m to move forward."
 };
 
-string invalid_input_shop[2] = {
-    "The shopkeeper raises an eyebrow at you. \"Sorry, we don't have that item in stock. Can I help you find something else?\"",
-    "The shopkeeper glances at the empty space on the shelf where that item used to be. \"Sorry, we're sold out right now. Can i interest you in something else?\""
-};
+
 
 string continue_road[4]={
     "The road seems peaceful and uneventful. It looks like you can only grip your sword tightly and proceed with determination.",
