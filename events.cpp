@@ -7,7 +7,7 @@
 #include "header.h"
 using namespace std;
 
-
+// randomly select and creat a monster, then return the monster.
 role create_monster(){
     role role_null;
     int k= rand()% 6 ;
@@ -99,6 +99,7 @@ role create_monster(){
     return role_null;
 }
 
+// create and return the final boss
 role create_dragon(){
 	role Black_Dragon;
 	Black_Dragon.legend = "Black_Dragon";
@@ -112,7 +113,9 @@ role create_dragon(){
         Black_Dragon.trash_talk[1] = "Your life is a drama, and it is finally time for the curtain to fall.";
         Black_Dragon.trash_talk[2] = "Why me here? Why you here?";
 	return Black_Dragon;
-    }
+}
+
+// creat and return monster "Mimic" (appears in random event Treasure_chest).
 role create_Mimic(){
 	role Mimic;
 	Mimic.legend = "Mimic";
@@ -128,12 +131,14 @@ role create_Mimic(){
 	return Mimic;
 }
 
+// define the struct of items in shop
 struct shop_item {
     string name;
     string description;
     int price;
 };
 
+// Initialization of all the items is shop
 shop_item Blood_potion = { "Blood potion","Raise your max HP by 20" ,40 };
 shop_item Attack_potion = { "Attack potion","Raise your strength by 5",30 };
 shop_item Earth_potion = { "Earth potion","Raise your defense value by 5",40 };
@@ -151,6 +156,7 @@ shop_item Magic_armor = {"Magic armor", "Raise your defense by 5", 50};
 shop_item Giant_armor = {"Giant armor", "Raise your defense by 10", 100};
 shop_item shop_item_armor_arr[4] = {God_bless_armor, Standard_armor, Magic_armor, Giant_armor};
 
+// random conversation when player buy an item from shop
 string buy_item_shop[] = {
     "\"May the blessings of the ancients guide you on your journey, adventurer. Thank you for your patronage!\"",
     "\"The winds of fortune favor thee, warrior.\"",
@@ -158,18 +164,21 @@ string buy_item_shop[] = {
     "\"The embrace of magic will surround those who purchase from us.\""
 };
 
+// random conversation when player try to buy an item that is sold out in shop
 string sold_out_shop[] = {
     "The gremlin raises an eyebrow at you. \"Sorry, we don't have that item in stock. Can I help you find something else?\"",
     "The gremlin glances at the empty space on the shelf where that item used to be. \"Sorry, we're sold out right now. Can i interest you in something else?\"",
     "\"I'm sorry adventurer. It seems this item is no longer available for purchase.\", said the germlin."
 };
+
+// random System prompt when player input an invalid command in shop
 string invalid_input_shop[] = {
     "The magic of the shop seems to be refusing that input. Perhaps there's another way you can achieve your goal?",
     "That choice does not resonate with the magical energies of this shop. Can you ask again in a different way?",
     "The arcane secrets of this shop hum with power, but that input is not unlocking them. Can you try again?",
     "The shadows within this store twist and turn, refusing to heed that request. Perhaps there's another path you can take?"
 };
-
+// Function used to generate items in shop and handle player's purchases.
 void ShowShop_and_BuyItems() {
 	cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. \"Give me the gold, and I'll give you the goods!\", he says."<<endl;
 	shop_item potion, weapon, armor;
@@ -184,6 +193,8 @@ void ShowShop_and_BuyItems() {
 	weapon = shop_item_weapon_arr[index_weapon];
 	armor = shop_item_armor_arr[index_armor];
     shop_item shop_item_arr[3]= {potion, weapon, armor};
+	
+    // show all the items in shop, also show its price and description 
     cout << "\033[32m-------------------------------------------------------------------\033[0m" << endl;
     for (int i=0; i<3; i++){
         cout << left;
@@ -196,25 +207,34 @@ void ShowShop_and_BuyItems() {
       // show 3 items,1 potions and 1 armor and 1 weapon in each shop.
 	
 	int bought_items[3] = {};
+	//Record the items purchased by the player, the player tries to buy the purchased items will show sold out
+	
 	cout << "Choose your preferred items! Enter number 1-3 for the products and 0 for exiting." << endl;
 	while (buy_items) {
+	// show player's gold
         cout << setw(30) << right << "Your gold : " << "\033[33mG" << role1.gold_coin << "\033[0m" << endl;
+		//check1 used to check if item is sold out. check2 used to check if player has enough gold to buy this item
 		bool check1 = true, check2 = true;
+		// read player's command
 		cin >> choice;
+		
+		// input "0" if players leave the shop
 		if (choice == "0") {
 			cout << "\"Good luck.\"" << ",said the gremlin and fades away in the cave." << endl;
 			buy_items = false;
 		}
 		else if (choice == "1" || choice == "2" || choice == "3"){
-            choice_int = stoi(choice);
+            	choice_int = stoi(choice);
+			// check whether the item is bought
 			for (n = 0; n < m; n++) {
-				if (bought_items[n] == choice_int) {                                  // check whether the item is bought
+				if (bought_items[n] == choice_int) {
 					cout << sold_out_shop[rand()%(sizeof(sold_out_shop)/sizeof(sold_out_shop[0]))] << endl;
 					check1= false;
 					break;
 				}
 			}
-			if ((role1.gold_coin < shop_item_arr[choice_int-1].price) && (check1 == true)) {                             // check whether the player has enough gold
+			// check whether the player has enough gold
+			if ((role1.gold_coin < shop_item_arr[choice_int-1].price) && (check1 == true)) {
 				cout << "\"Stop bothering me if don't have enough gold.\",said the gremlin" << endl;
 				check2 = false;
 			}
@@ -232,7 +252,7 @@ void ShowShop_and_BuyItems() {
 					role1.gold_coin -= 40;
 				}
 				cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
-                bought_items[m] = choice_int;
+                	bought_items[m] = choice_int;
 		        m++;
 			}
 			else if (check1 && check2 && choice_int == 2) {
@@ -252,9 +272,9 @@ void ShowShop_and_BuyItems() {
 					thing="Huge axe";
 					change_proporties(thing);
 				}
-				role1.gold_coin -= shop_item_arr[choice_int-1].price;
-                cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
-                bought_items[m] = choice_int;
+			role1.gold_coin -= shop_item_arr[choice_int-1].price;
+                	cout<< buy_item_shop[rand()%(sizeof(buy_item_shop)/sizeof(buy_item_shop[0]))] << ", said the gremlin." << endl;
+                	bought_items[m] = choice_int;
 		        m++;
 			}
 			else if (check1 && check2 && choice_int == 3) {
@@ -282,15 +302,17 @@ void ShowShop_and_BuyItems() {
 		}
         else {
             cout << invalid_input_shop[rand()%(sizeof(invalid_input_shop)/sizeof(invalid_input_shop[0]))] << endl;
+	    // handle invaild command
         }
 	}
 }
 
 
 
-
+// used to divide text and options
 const string Dividing_line = "-------------------------------------------------------------------\n";
 
+// random System prompt when player input an invalid command in event
 string invalid_input_1[8]= {
     "You try to do that, but it seems impossible. Perhaps there's another way?",
     "Your words fall on deaf ears. Perhaps there is another way?",
@@ -301,6 +323,8 @@ string invalid_input_1[8]= {
     "Your attempt to manipulate the world around you has failed. Think carefully about what you want to do next.",
     "The world around you remains still and silent, indifferent to your actions. Please try again with a different approach."
 };
+
+// random System prompt when player input an invalid command in fight
 string invalid_input_2[8]= {
     "The hero within you yearns to succeed, but that's not going to work.",
     "The enemy seems to be waiting for you to make a move. Choose more carefully.",
@@ -312,6 +336,7 @@ string invalid_input_2[8]= {
     "You feel a sense of foreboding as you realize that won't work. There must be another way forward.",
 };
 
+// random System prompt to remind the player that the event is over and move on
 string continue_input_1[6]= {
     "The path ahead is filled with danger and uncertainty. But you're ready for whatever comes next. \nPress \033[1;34m[Enter]\033[0m when you're prepared to move forward.",
     "You feel a sense of satisfaction as you complete the task at hand. But there's still much to be done. \nHit \033[1;34m[Enter]\033[0m to continue your journey.",
@@ -320,6 +345,8 @@ string continue_input_1[6]= {
     "The path ahead is shrouded in mist, but your determination is clear as day. \nPress \033[1;34m[Enter]\033[0m when you're ready to take the next step.",
     "The path ahead may be shrouded in darkness, but you have the light of courage to guide you. \nPress \033[1;34m[Enter]\033[0m to keep moving forward."
 };
+
+// random System prompt to remind the player that the fight is over and move on
 string continue_input_2[6]= {
     "Your journey through this dark and foreboding world has only just begun. \nPress \033[1;34m[Enter]\033[0m to step boldly into the unknown.",
     "With the creature vanquished, you take a moment to catch your breath and prepare for what lies ahead. \nPress \033[1;34m[Enter]\033[0m to continue your journey.",
@@ -339,7 +366,7 @@ string continue_road[4]={
 };
 
 
-
+// handle the case when the player meet portal event, the player's position will be teleported forward three steps
 void Portal(int& num, int&status){
     string command;
     cout << Dividing_line
@@ -372,6 +399,7 @@ void Portal(int& num, int&status){
     getline(cin,command);
 }
 
+// handle the case when the player meet Golden_Shrine event.
 void Golden_Shrine(){
     string command;
     cout << Dividing_line << "Before you lies an elaborate shrine to an ancient spirit.\n";
@@ -411,6 +439,9 @@ void Golden_Shrine(){
     getline(cin,command);
 }
 
+// handle the case when the player meet Golden_Shrine event.
+// Players have a half chance of meeting a normal treasure chest and a half chance of meeting a treasure chest mimic (a monster)
+// If the player fails in a battle with the mimic, reuturn true. Else return false. (check if the game lose)
 int Treasure_chest(){
     string command;
     string thing;
@@ -527,6 +558,8 @@ int Treasure_chest(){
     }
 }
 
+// handle the case when the player meet Lab event.
+// Players can get three random potions in this event
 void Lab(){
     string command;
     int index[3]={0,0,0};
@@ -574,6 +607,8 @@ void Lab(){
     getline(cin,command);
 }
 
+// Use rand() to determine which event the player encounters.
+// If the player fails in a battle with the mimic, reuturn true
 int randomEvent(){
     int end;
     switch (rand()%3)
