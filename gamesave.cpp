@@ -39,7 +39,7 @@ void gamesave(){
         fout.close();
     }
     else{
-        // map
+        // map information
         for (int i=0; i<5;i++){
             fout << choose1[i] << " ";
         }
@@ -55,7 +55,7 @@ void gamesave(){
         }
         fout << endl;
 
-        // role
+        // role information
         fout << status << " " << num << endl;
         fout << role1.legend << "\n" ;
         fout << role1.name << "\n" ;
@@ -72,6 +72,7 @@ void gamesave(){
         cout << "This game is saved." << endl;
         fout.close();
         ifstream fin;
+        //open game menu and save the game name, then close
         fin.open("game_menu.txt");
         while (fin >> data){
             if (data == savename){
@@ -87,6 +88,7 @@ void gamesave(){
     }
 }
 
+//show the game saved in the game menu and choose a game 
 string choosegame(){
     ifstream fin;
     vector<string> savenames;
@@ -159,7 +161,6 @@ bool loadgame(string savename){
         getline(fin,data_str);
         getline(fin,data_str);
         role1.weapon = data_str;
-        //getline(fin,data_str);
         getline(fin,data_str);
         role1.armor = data_str;
         fin >> data;
