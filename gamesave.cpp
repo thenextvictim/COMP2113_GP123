@@ -72,7 +72,7 @@ void gamesave(){
         cout << "This game is saved." << endl;
         fout.close();
         ifstream fin;
-        //open game menu and save the game name, then close
+        // save the game name to the game menu
         fin.open("game_menu.txt");
         while (fin >> data){
             if (data == savename){
@@ -88,7 +88,7 @@ void gamesave(){
     }
 }
 
-//show the game saved in the game menu and choose a game 
+//show the game saved in the game menu 
 string choosegame(){
     ifstream fin;
     vector<string> savenames;
@@ -103,6 +103,8 @@ string choosegame(){
         savenames.push_back(savename);
         index++;
     }
+    
+    //select history game saved
     cout << "Please choose a game." << endl;
     cin >> index;
     while (index <= 0 || index > savenames.size()){
@@ -114,6 +116,7 @@ string choosegame(){
     return savenames[index-1];
 }
 
+// load the game if everything is ok, otherwise not
 bool loadgame(string savename){
     ifstream fin;
     int data;
