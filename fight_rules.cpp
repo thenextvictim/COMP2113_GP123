@@ -351,11 +351,11 @@ int fight(role role2){
         sleep(1);
     
         }
-        if (role2.name == "Mimic" && e == 0){
+        if (role2.legand == "Mimic" && e == 0){
             cout << "With a final blow, you vanquish the gruesome mimic.\n"
                  << "You discover a hoard of treasure within the remains, including a rare piece of equipment.\n";
             
-            200 + rand()%50;
+            get = 200 + rand()%50;
             role1.gold_coin += get;
             if (role1.legend == "Human warrior"){
                 switch (rand()%2)
