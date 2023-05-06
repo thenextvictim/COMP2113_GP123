@@ -5,7 +5,7 @@ Deng Menghao, Huang Shiqi, Song Bingyan, Wu Qiong, Zhang Kaiqi (ordered alphabet
 ## Game description
 This is a roguelike game with a core feature of randomness and adventure. The player will play the role of legend to explore a maze full of danger. The player can first edit his/her name and load an existing game or create one. After choosing a new game, the player will need to select a legend. He/She can choose 3 careers--human warrior, elf magician and giant tank.  
 
-Human warrior ： balanced initial damage(DA), health(HP), defense(DE) and moderate initial gold coins(G) --i.e. initial DA(20), HP(100), DE(15), G(50).
+Human warrior ：balanced initial damage(DA), health(HP), defense(DE) and moderate initial gold coins(G) --i.e. initial DA(20), HP(100), DE(15), G(50).
 
 Elf magician ：very high initial DA, low HP, low DE, and many initial G --i.e. initial DA(30), HP(70), DE(10), G(70).
 
@@ -45,11 +45,12 @@ Holly relic:
     If used, then both legend and boss will be deducted 50% of HP.  
     Else, nothing happens and final battle will start.  
     
-Bag: You can cheak your properties here along with your number of gold coins and your equipments.
+Bag: You can check your properties here, along with your number of gold coins and your equipment.
     
-Fight rules： Legends are the most acute beings, even the giant tank, so they can first attack the monsters and the boss.
- Every round， legends will attack once and monsters will attend once, and HP will be deducted if being attacked. The loss of HP: Attacker's DA - Defenser's DE
- When one of the fighters'HP <= 0, then fight is over. After a fight, since legends are blessed by the gods, they can recover from all hurts before and HP will resetted to 100%.  
+Fight rules： 
+Legends are the most acute beings, even the giant tank, so they can first attack the monsters and the boss.
+Every round，legends will attack once, monsters will attend once, and HP will be deducted if attacked. (The loss of HP: Attacker's DA - Defenser's DE.) When one of the fighters'HP <= 0, then the fight is over. 
+After a fight, since the gods bless legends, they can recover from all the hurts before, and HP will reset to 100%.  
  
  Fight example (for demo, not identical to real situation):  
  
