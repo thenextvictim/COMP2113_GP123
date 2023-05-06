@@ -351,7 +351,7 @@ int fight(role role2){
         sleep(1);
     
         }
-        if (role2.legand == "Mimic" && e == 0){
+        if (role2.legend == "Mimic" && e == 0){
             cout << "With a final blow, you vanquish the gruesome mimic.\n"
                  << "You discover a hoard of treasure within the remains, including a rare piece of equipment.\n";
             
