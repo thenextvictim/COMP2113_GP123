@@ -5,49 +5,49 @@ Deng Menghao, Huang Shiqi, Song Bingyan, Wu Qiong, Zhang Kaiqi (ordered alphabet
 ## Game description
 This is a roguelike game with a core feature of randomness and adventure. The player will play the role of legend to explore a maze full of danger. The player can first edit his/her name and load an existing game or create one. After choosing a new game, the player will need to select a legend. He/She can choose 3 careers--human warrior, elf magician and giant tank.  
 
-Human warrior -- balanced initial damage(DA), health(HP), defense(DE) and moderate initial gold coins(G) --i.e. initial DA(20), HP(100), DE(15), G(50).
+Human warrior ： balanced initial damage(DA), health(HP), defense(DE) and moderate initial gold coins(G) --i.e. initial DA(20), HP(100), DE(15), G(50).
 
-Elf magician -- very high initial DA, low HP, low DE, and many initial G --i.e. initial DA(30), HP(70), DE(10), G(70).
+Elf magician ：very high initial DA, low HP, low DE, and many initial G --i.e. initial DA(30), HP(70), DE(10), G(70).
 
-Giant tank --  low initial DA, high HP, high DE, and low initial G --i.e. initial DA(12), HP(140), DE(20), G(40).
+Giant tank ：low initial DA, high HP, high DE, and low initial G --i.e. initial DA(12), HP(140), DE(20), G(40).
 
-After selecting a role to play, an entirely random maze will be automatically created with several branches, and players will encounter a fork every three steps. After choosing the direction at the fork， players would like to trigger random events like facing monsters/encountering a portal/finding shops/experiencing magical incidents, etc. Then after several steps of adventure, the legend will finally reach the maze exit with a boss in the end. The player will pass the maze and min if the boss is defeated. Otherwise, legends will lose if HP <= 0 in any of the fights, which means the current game loses, and the player needs to load an existing game or create another new one.
+After selecting a role to play, an entirely random maze will be automatically created with several branches, and players will encounter a fork every three steps. After choosing the direction at the fork，players would like to trigger random events like facing monsters/encountering a portal/finding shops/experiencing magical incidents, etc. Then after several steps of adventure, the legend will finally reach the maze exit with a boss in the end. The player will pass the maze and min if the boss is defeated. Otherwise, legends will lose if HP <= 0 in any of the fights, which means the current game loses, and the player needs to load an existing game or create another new one.
 
 ## Nouns and rules explanation
 
-Monsters: will attack legends at once and have different types. 3 legends are good at fighting with some of them, but not able to handle the others. Once defeated, the
-legend will get some spoil include: weapoms, armors, gold coins.
+Monster: They will attack legends at once and have different types. The three legends are respectively good at fighting some of them, but unable to take on others. Once defeated, the legend will get some spoils, including weapons, armors, and gold coins.
 
-Portal: if a legend find this, he/she can teleport to a deeper place in the maze(i.e. omit some random branches and get closer to the end).
+Portal: If a legend finds this, he/she can teleport to a deeper place in the maze(i.e. omit some random branches and get closer to the end).
 
-Shops: crafty goblin merchant will show the legend 3 types of goods include weapons, armors, or magic potions. The goods are expensive and cost gold coins.
+Shop: Crafty goblin merchant will show the legend 3 types of goods, including weapons, armour, or magic potions. The goods are expensive and cost gold coins.
 
-Random events: random events will be meeted at every crossing and unknown things will happen, role can get weanpons, aarmors, magic options and holly relic and sometimes debuffs.
+Random event: Random events will be met at every crossing, and unknown things will happen. The role can get weapons, armour, magic potions, holly relic, and sometimes debuffs.
 
-Weapons:
-    Long sword: +5 damage, every legend can use.
-    Flintlock: +8 damage, only can be used by human warrior.
-    Magical stick: +10 damage, only can be used by elf magician.
-    Huge axe： +5 damage， only can be used by giant tank.
+Weapon:  
+    Long sword: +5 damage, every legend can use.  
+    Flintlock: +8 damage, only can be used by human warrior.  
+    Magical stick: +10 damage, only can be used by elf magician.  
+    Huge axe： +5 damage， only can be used by giant tank.  
 
-Armors:
-    God-bless armor: +5 defense, every legend can use.
-    Standard armor: +8 defense, only can be used by human warrior.
-    Magic armor： +5 defense, only can be used by elf magician.
-    Giant armor: +10 defense, only can be uesd by giant tank.
+Armour:  
+    God-bless armor: +5 defense, every legend can use.  
+    Standard armor: +8 defense, only can be used by human warrior.  
+    Magic armor： +5 defense, only can be used by elf magician.  
+    Giant armor: +10 defense, only can be uesd by giant tank.  
 
-Magic potion:
-    damage potion：+5 damage, every legend can drink.
-    health potion: +20%HP， every legend can drink.
-    defense potion: +5 defense, every legend can drink.
+Magic potion:  
+    Damage potion：+5 damage, every legend can drink.  
+    Health potion: +20%HP， every legend can drink.  
+    Defense potion: +5 defense, every legend can drink.  
 
-Holly relic: Only works when facing the boss--Prince of the Devils, a legend can choose to use or not to use before the final battle.
-    If used, then both legend and boss will be deducted 50% of HP.
-    Else, nothing happens and final battle will start.
+Holly relic: 
+    Only works when facing the boss--Prince of the Devils, a legend can choose to use or not to use before the final battle.  
+    If used, then both legend and boss will be deducted 50% of HP.  
+    Else, nothing happens and final battle will start.  
     
 Bag: You can cheak your properties here along with your number of gold coins and your equipments.
     
- Fight rules： Legends are the most acute beings, even the giant tank, so they can first attack the monsters and the boss.
+Fight rules： Legends are the most acute beings, even the giant tank, so they can first attack the monsters and the boss.
  Every round， legends will attack once and monsters will attend once, and HP will be deducted if being attacked. The loss of HP: Attacker's DA - Defenser's DE
  When one of the fighters'HP <= 0, then fight is over. After a fight, since legends are blessed by the gods, they can recover from all hurts before and HP will resetted to 100%.  
  
