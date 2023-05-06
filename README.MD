@@ -99,6 +99,8 @@ About the role: Legend, name, weapon, armor and trash talk, these are in form of
 About the map: Generated paths and player selections are saved as arrays.
 
 3. Dynamic memory management
+In the gamesave.cpp file, vertor that stores strings is used to add the savenames of a game when players want to save a game.
+Players can save games without the limit on numbers of saved games.
 
 4. File input/output (e.g., for loading/saving game status)  
 If the player chooses to save, all the required data will be stored in a text file, and the data in the file can be read in the next game.
