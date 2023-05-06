@@ -20,9 +20,6 @@ struct role{
     bool holly_relic;
     string trash_talk[3];
 };
-
-role role1;
-
 */
 
 role role1;
@@ -41,7 +38,6 @@ void gamesave(){
     }
     else{
         // map.cpp
-        //fout << "choose1" << " ";
         for (int i=0; i<5;i++){
             fout << choose1[i] << " ";
         }
@@ -61,7 +57,6 @@ void gamesave(){
 
         // role
         fout << status << " " << num << endl;
-        //fout << "role1" << " ";
         fout << role1.legend << "\n" ;
         fout << role1.name << "\n" ;
         fout << role1.damage << " " ;
