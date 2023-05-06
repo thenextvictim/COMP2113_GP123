@@ -234,7 +234,7 @@ void ShowShop_and_BuyItems() {
 					change_proporties(thing);
 				}
 				role1.gold_coin -= shop_item_arr[choice-1].price;
-                cout<<"Thank you!, said the gremlin." << endl << " Your gold: \033[33mG\033[0m" <<role1.gold_coin << endl;
+                cout<< "Thank you!, said the gremlin." << endl;
                 bought_items[m] = choice;
 		        m++;
 			}
@@ -265,108 +265,7 @@ void ShowShop_and_BuyItems() {
 }
 
 
-/*
 
-void ShowShop_and_BuyItems() {
-	//cout << "You encounter a sneaky and greedy gremlin merchant in a muddy cave. \n\"Give me the gold, and I'll give you the goods!\", he says.\n"<<endl;
-	shop_item potion1, potion2, relic1, relic2;
-	int choice, m = 0, n;
-	bool buy_items = true;
-	srand(time(NULL));
-	int index_potion1 = rand() % 4;
-	int index_relic1 = rand() % 4;
-	int index_relic2 = rand() % 4;  
-	potion1 = shop_item_potion_arr[index_potion1];
-	relic1 = shop_item_weapon_arr[index_relic1];
-	relic2 = shop_item_armor_arr[index_relic2];
-
-    shop_item shop_item_arr[3] = {potion1,relic1,relic2};   // items in shop
-
-    cout << Dividing_line;
-    for (int i = 0; i < 4; i++) {
-    cout << setw(16) << left << shop_item_arr[i].name << "  ";
-    cout << "$" << setw(4) << left << shop_item_arr[i].price << endl;
-    cout << shop_item_arr[i].description << endl << Dividing_line;
-    }                      // show four items, two potions and two relics in each shop.
-
-	int bought_items[4] = {};
-	cout << "Choose your preferred items! Enter number 1-4 for the products, -1 for refresh shop, -2 for check player status and 0 for exiting.\n";
-	while (buy_items) {
-        cout << setw(30) << right << "Your gold : " << gold << endl;
-		bool check1 = true, check2 = true;
-		cin >> choice;
-		if (choice == 0) {
-			cout << "\"Good luck.\",said the gremlin and fades away in the cave.\n";
-			buy_items = false;
-		}
-        else if (choice < 1 || choice > 4){
-            cout << "Invalid Input" << endl;
-            // Invalid Input
-        }
-		else {
-			for (int bought_item : bought_items) { //
-				if (bought_item == choice) {                                  // check whether the item is bought
-					cout << "The item is sold out! Choose another one !\n";
-					check1= false;
-					break;
-				}
-			}
-			if (role1.gold_coin < shop_item_arr[choice-1].price) {                             // check whether the player has enough gold
-				cout << "'stop bothering me if don't have enough gold',said the gremlin\n";
-				check2 = false;
-			}
-			if (check1 && check2 && choice==1){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
-					role1.health += 20;
-					role1.gold_coin -= 40;
-				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
-					role1.attack += 5;
-					role1.gold_coin -= 30;
-				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
-					role1.defense += 5;
-					role1.gold_coin -= 40;
-				}
-            else if (check1 && check2 && choice==2){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
-					role1.health += 20;
-					role1.gold_coin -= 40;
-				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
-					role1.attack += 5;
-					role1.gold_coin -= 30;
-				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
-					role1.defense += 5;
-					role1.gold_coin -= 40;
-				}
-            else if (check1 && check2 && choice==3){
-				if (shop_item_arr[choice].name == Blood_potion.name) {
-					role1.health += 20;
-					role1.gold_coin -= 40;
-				}
-				if (shop_item_arr[choice].name == Attack_potion.name) {
-					role1.attack += 5;
-					role1.gold_coin -= 30;
-				}
-				if (shop_item_arr[choice].name == Earth_potion.name) {
-					role1.defense += 5;
-					role1.gold_coin -= 40;
-				}
-            role1.gold_coin -= shop_item_arr[choice-1].price;
-            cout << "You bought the " << shop_item_arr[choice-1].name << endl;
-            bought_items[m] = choice;
-            m++;
-            // Mark
-            }
-            }
-		}
-	}
-}
-}
-
-*/
 
 const string Dividing_line = "-------------------------------------------------------------------\n";
 
