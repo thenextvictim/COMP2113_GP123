@@ -24,6 +24,7 @@ struct role{
 
 role role1;
 
+//Function gamesave, enter the game name and open the file
 void gamesave(){
     ofstream fout;
     string savename,data;
@@ -32,24 +33,23 @@ void gamesave(){
     cin >> savename;
     fout.open(savename.c_str());
 
+    //If successful, load the map and role information
     if(fout.fail()){
         cout << "Error in opening the file." << endl;
         fout.close();
     }
     else{
-        // map.cpp
+        // map
         for (int i=0; i<5;i++){
             fout << choose1[i] << " ";
         }
         fout << endl;
 
-        //fout << "choose2" << " ";
         for (int i=0; i<5;i++){
             fout << choose2[i] << " ";
         }
         fout << endl;
 
-        //fout << "choice" << " ";
         for (int i=0; i<5;i++){
             fout << choice[i] << " ";
         }
