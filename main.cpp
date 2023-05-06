@@ -50,6 +50,7 @@ int main(){
                 g = loadgame(savename);
                 cout << "Fornign traveller, you come back to your adventure!" << endl;
             }
+            fin.close();
         }
 
         // new game
