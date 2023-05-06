@@ -52,7 +52,7 @@ Legends are the most acute beings, even the giant tank, so they can first attack
 Every round，legends will attack once, monsters will attend once, and HP will be deducted if attacked. (The loss of HP: Attacker's DA - Defenser's DE.) When one of the fighters'HP <= 0, then the fight is over. 
 After a fight, since the gods bless legends, they can recover from all the hurts before, and HP will reset to 100%.  
  
- Fight example (for demo, not identical to real situation):  
+Fight example (for demo, not identical to real situation):  
  
           (your_name): Infor  the name of justice, your guilty will be judged!  
           Forest wolf: Bow-bow~  
@@ -89,9 +89,9 @@ After a fight, since the gods bless legends, they can recover from all the hurts
 
 ## Five coding requirements
 1. Generation of random game sets or events
-Players will encounter different random events as they advance.  
-The types of monsters you meet are random, and gold coins and game equipment will be randomly dropped after the battle is won.  
-Different items will randomly appear in the store.  
+Players will encounter different random events as they advance.    
+The types of monsters met are random, and the number of gold coins and game equipment will be randomly dropped after successfully defeating the monster.  
+Different types of goods will be randomly shown in the shop. 
 
 2. Data structures for storing game status  
 Saved data includes the role and the map i.e. monsters, shops and portals.
