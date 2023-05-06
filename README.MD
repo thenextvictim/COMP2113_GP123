@@ -42,7 +42,7 @@ Magic potion:
 
 Holly relic: 
     Only works when facing the boss--Prince of the Devils, a legend can choose to use or not to use before the final battle.  
-    If used, then both legend and boss will be deducted 50% of HP.  
+    If used, then both legend and boss will be deducted 50% of HP, like (100/200) will be displayed.
     Else, nothing happens and final battle will start.  
     
 Bag: You can check your properties here, along with your number of gold coins and your equipment.
@@ -111,6 +111,7 @@ If the player chooses to save, all the required data will be stored in a text fi
 The main.cpp file contains the driver program and basic inputs for this game. Game map, fight rule, random events and game save are declared and stored in separate files.
 
 ## Compilation and execution instructions
+Please first load all files of *.cpp, *.h in our repo or just load all files in the GP123.zip to a directory of CS server and do followings:
 Use```make clean``` to clean all old *.o and game files.   
 Run ```make game``` to compile the game.  
 Do ```./game``` to start the game.  
