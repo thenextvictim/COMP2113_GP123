@@ -47,7 +47,7 @@ Bag: You can cheak your properties here along with your number of gold coins and
     
  Fight rules： Legends are the most acute beings, even the giant tank, so they can first attack the monsters and the boss.
  Every round， legends will attack once and monsters will attend once, and HP will be deducted if being attacked. The loss of HP: Attacker's DA - Defenser's DE
- When one of the fighters'HP <= 0, then fight is over.  
+ When one of the fighters'HP <= 0, then fight is over. After a fight, since legends are blessed by the gods, they can recover from all hurts before and HP will resetted to 100%.  
  
  Fight example:  
  
@@ -72,9 +72,6 @@ Bag: You can cheak your properties here along with your number of gold coins and
           Human warrior（your_name） attacks Forest wolf and make a hurt of -12 (0/60)  
           Forest wolf dies, you win.  
           You gets 5 gold coins, a Magic armor.  
-          
-  After a fight, since legends are blessed by the gods, they can recover from all hurts before and HP will resetted to 100%.
-
 
 //A list of features that you have implemented and explain how each coding 
 element 1 to 5 listed under the coding requirements aforementioned support 
