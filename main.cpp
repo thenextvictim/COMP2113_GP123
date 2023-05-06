@@ -138,7 +138,7 @@ int main(){
                 else if (command=="1"){
                     status++;
                     cout<<"You go on for one step!"<<endl;
-                    cout<<"     |     "<<endl; //
+                    cout<<"     |     "<<endl; //it is only a sign that player go on for one step successfully
                     cout<<"     |     "<<endl;
                     if (status%3==0 && status!=15){
                         //int nchoose;
@@ -159,6 +159,7 @@ int main(){
                         }
                         num++;
                         //map(place);
+                        //to call corresponding function for different events
                         switch (place){
                         case 0:
                             ShowShop_and_BuyItems();
