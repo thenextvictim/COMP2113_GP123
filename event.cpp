@@ -264,6 +264,7 @@ void ShowShop_and_BuyItems() {
 	}
 }
 
+
 /*
 
 void ShowShop_and_BuyItems() {
@@ -457,26 +458,34 @@ void Golden_Shrine(){
     string command;
     cout << Dividing_line << "Before you lies an elaborate shrine to an ancient spirit.\n";
     cout << Dividing_line
-        << "1. " << "\033[1;34m[Pray]\033[0m Gain 100 \033[1;33mGold\033[0m.\n"
-        << "2. " << "\033[1;34m[Desecrate]\033[0m Gain 275 \033[1;33mGold\033[0m. Become Cursed.\n"
-        << "3. " << "\033[1;34m[Leave]\033[0m Nothing happens.\n\n";
+        << "1. " << "\033[1;34m[Pray]\033[0m Gain 80 \033[1;33mGold\033[0m.\n"
+        << "2. " << "\033[1;34m[Desecrate]\033[0m Gain 175 \033[1;33mGold\033[0m. Become Cursed.\n"
+        << "3. " << "\033[1;34m[Chant a mysterious spell]\033[0m \033[1m\"Super Pass COMP2113!\"\033[0m\n"
+        << "4. " << "\033[1;34m[Leave]\033[0m Nothing happens.\n\n";
     getline(cin,command);
-    while(command != "1" && command != "2" && command != "3"){
+    while(command != "1" && command != "2" && command != "3" && command != "4"){
         cout << invalid_input_1[rand()%(sizeof(invalid_input_1)/sizeof(invalid_input_1[0]))] << endl;
         getline(cin,command);
     }
     cout << Dividing_line;
     if (command == "1"){
-        role1.gold_coin += 100;
+        role1.gold_coin += 80;
         cout << "As your hand touches the shrine, gold rains from the ceiling showering you in riches.\n";
     }
     else if (command == "2"){
-        role1.gold_coin += 275;
+        role1.gold_coin += 175;
         role1.damage -= 3;
         cout << "Each time you strike the shrine, gold pours forth again and again!\n"
              << "As you pocket the riches, something " << "\033[1;31mweighs heavily on you.\033[0m\n";
     }
     else if (command == "3"){
+        role1.damage += 5;
+        role1.defense += 5;
+        role1.health += 20;
+        role1.gold_coin += 2113;
+        cout << "With the blessing of the C++ god, you have acquired \033[1;33m2113 pieces of gold coins\033[0m.\nDon't worry, this will not cause integer overflow. ;D\n";
+    }
+    else if (command == "4"){
         cout << "You ignore the shrine.\n";
     }
     //cout << Dividing_line << "1. \033[1;34m[Continue]\033[0m\n\n";
@@ -555,7 +564,7 @@ int Treasure_chest(){
                 thing = "God-bless armor";
             }
             else {
-                switch (rand())
+                switch (rand()%6)
                 {
                 case 0:
                     thing = "Flintlock";
@@ -599,6 +608,7 @@ int Treasure_chest(){
         return 0;
     }
 }
+
 void Lab(){
     string command;
     int index[3]={0,0,0};
