@@ -3,7 +3,7 @@ Our group include 5 members:
 Deng Menghao, Huang Shiqi, Song Bingyan, Wu Qiong, Zhang Kaiqi (ordered alphabetically).
 
 ## Game description
-This a roguelike game, which has a core feature of randomness and adventure. The player will play a role of legend to explore a maze full of danger. Player can first edit his/her own name and load a existing game or create a game. After choosing a new game, player will need to select a legend. He/She can choose 3 careers--human warrior, elf magician and giant tank .
+This is a roguelike game with a core feature of randomness and adventure. The player will play the role of legend to explore a maze full of danger. The player can first edit his/her name and load an existing game or create one. After choosing a new game, the player will need to select a legend. He/She can choose 3 careers--human warrior, elf magician and giant tank.  
 
 Human warrior -- balanced initial damage(DA), health(HP), defense(DE) and moderate initial gold coins(G) --i.e. initial DA(20), HP(100), DE(15), G(50).
 
@@ -11,7 +11,7 @@ Elf magician -- very high initial DA, low HP, low DE, and many initial G --i.e. 
 
 Giant tank --  low initial DA, high HP, high DE, and low initial G --i.e. initial DA(12), HP(140), DE(20), G(40).
 
-After selected a role to play, a fully random maze will be automatically created with several branches, players will encounter a fork every three steps. After choosing the direction at the fork，players would like to trigger some random events like facing monsters/ enconter a portal/ find shops/ experience magical incidents, etc. Then after several steps of adventure, the legend will finally reach the exit of maze with a boss in the end. If boss is defeated, then player will pass the maze and min. Otherwise, legends will lose if HP <= 0 in any of the fights, which also means the current game lose and player need to load a existing game or create another new game.
+After selecting a role to play, an entirely random maze will be automatically created with several branches, and players will encounter a fork every three steps. After choosing the direction at the fork， players would like to trigger random events like facing monsters/encountering a portal/finding shops/experiencing magical incidents, etc. Then after several steps of adventure, the legend will finally reach the maze exit with a boss in the end. The player will pass the maze and min if the boss is defeated. Otherwise, legends will lose if HP <= 0 in any of the fights, which means the current game loses, and the player needs to load an existing game or create another new one.
 
 ## Nouns and rules explanation
 
